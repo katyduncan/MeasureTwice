@@ -12,5 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require svg
+//= require svg_draggable
+
 //= require turbolinks
 //= require_tree .

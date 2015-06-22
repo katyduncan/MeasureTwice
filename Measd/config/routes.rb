@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   resources :users do
-    resources :layouts
+    resources :floorplans
   end
 
-  resources :layouts, only: [:show] do
+  resources :floorplans, only: [:show] do
      get "serve", :on => :member
   end
 
