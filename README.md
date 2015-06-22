@@ -1,2 +1,2 @@
-# MeasureTwice
-Team Meas'd Final Project
+# Meas'd
+DBC Final Project
