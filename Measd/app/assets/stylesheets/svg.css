@@ -1,0 +1,22 @@
+
+shaikhmajdi [4:31 PM]4:31
+#drawing {
+ border: 1px solid red;
+ height: 600px;
+ width: 800px;
+ float: left;
+}
+
+#furniture_info{
+ border: 1px solid red;
+ width: 200px;
+ height: 400px;
+ float: left;
+}
+
+#room_info{
+ border: 1px solid red;
+ width: 200px;
+ height: 400px;
+ float: left;
+}
