@@ -19,45 +19,45 @@ $(document).ready(function(){
     room.height($('#room_length').val())
   })
 
-  var nightstand = draw.image('assets/images/nightstand.png', 20,20)
+  var nightstand = draw.image('/assets/nightstand.png', 20,20)
   nightstand.move(10, 510)
   nightstand.attr({name: 'Nightstand', preserveAspectRatio: 'none'})
 
 
-  var bed = draw.image('assets/bed.png', 60,80)
+  var bed = draw.image('/assets/bed.png', 60,80)
   bed.move(40,510)
   bed.attr({name: 'Bed', preserveAspectRatio: 'none'})
 
-  var desk = draw.image('assets/desk.png', 60,30)
+  var desk = draw.image('/assets/desk.png', 60,30)
   desk.move(110,510)
   desk.attr({name: 'Desk', preserveAspectRatio: 'none'})
 
-  var couch = draw.image('assets/couch.png', 90,40)
+  var couch = draw.image('/assets/couch.png', 90,40)
   couch.move(180, 510)
   couch.attr({name: 'Couch', preserveAspectRatio: 'none'})
 
-  var sofa = draw.image('assets/sofa.png', 50,40)
+  var sofa = draw.image('/assets/sofa.png', 50,40)
   sofa.move(280,510)
   sofa.attr({name: 'Sofa', preserveAspectRatio: 'none'})
 
-  var tvStand = draw.image('assets/tvstand.png', 60,20)
+  var tvStand = draw.image('/assets/tvstand.png', 60,20)
   tvStand.move(340,510)
   tvStand.attr({name: 'TV Stand', preserveAspectRatio: 'none'})
 
-  var doorLeft = draw.image('assets/doorleft.png', 30,30)
+  var doorLeft = draw.image('/assets/doorleft.png', 30,30)
   doorLeft.move(410,510)
   doorLeft.attr({name: 'Door', preserveAspectRatio: 'none'})
 
 
-  var doorRight = draw.image('assets/doorright.png', 30,30)
+  var doorRight = draw.image('/assets/doorright.png', 30,30)
   doorRight.move(450,510)
   doorRight.attr({name: 'Door', preserveAspectRatio: 'none'})
 
-  var windowFrame = draw.image('assets/window.png', 50,6)
+  var windowFrame = draw.image('/assets/window.png', 50,6)
   windowFrame.move(490,510)
   windowFrame.attr({name: 'Window', preserveAspectRatio: 'none'})
 
-  var electric = draw.image('assets/outlet.png', 25,25)
+  var electric = draw.image('/assets/outlet.png', 25,25)
   electric.move(550,510)
   electric.attr({name: 'Power Outlet', preserveAspectRatio: 'none'})
 
