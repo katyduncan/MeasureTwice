@@ -328,6 +328,7 @@ section h2.section-heading {
     margin-top: 0;
     margin-bottom: 15px;
     font-size: 40px;
+    font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
 }
 
 section h3.section-subheading {
@@ -905,4 +906,32 @@ h3{
  letter-spacing:3px;
  font-size: 25px;
  font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+input[type="text"] {
+    height:32px;
+    font-weight: bold;
+    border-radius: 7px;
+    /*-moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    box-shadow:rgba(0,0,0,0.5) 0px 0px 24px; border-radius:12px;*/
+}
+input[type="number"] {
+    height:32px;
+    font-weight: bold;
+    border-radius: 7px;
+   /* -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;*/
+    /*box-shadow:rgba(0,0,0,0.5) 0px 0px 24px; border-radius:12px;*/
+}
+/* input[type="button"] {
+    height: 40px;
+}*/
+
+
+.f-title{
+    font-size: 15px;
+    font-family: verdana;
 }
