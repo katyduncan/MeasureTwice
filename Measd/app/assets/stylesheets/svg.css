@@ -4,19 +4,24 @@
  /*border: 1px solid red;*/
  height: 600px;
  width: 800px;
- float: left;
+ /*float: left;*/
+ outline: 3px solid black;
+ padding: 0px !important;
 }
 
 #furniture_info{
- border: 1px solid red;
- width: 200px;
+ /*border: 1px solid red;*/
+ /*width*/
  height: 400px;
  float: left;
+ padding: 2px;
+
 }
 
 #room_info{
- border: 1px solid red;
- width: 200px;
+ /*border: 1px solid red;*/
+ width: 14.8%;
  height: 400px;
- float: left;
+ float: right;
+ padding: 2px;
 }

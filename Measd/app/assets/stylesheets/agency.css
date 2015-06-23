@@ -3,6 +3,19 @@
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
+/*
+* {
+vertical-align: baseline;
+font-weight: inherit;
+font-family: inherit;
+font-style: inherit;
+font-size: 100%;
+border: 0 none;
+outline: 0;
+padding: 0;
+margin: 0;
+}*/
+
 
 body {
     overflow-x: hidden;
@@ -910,6 +923,7 @@ h3{
 
 input[type="text"] {
     height:32px;
+    width: 150px;
     font-weight: bold;
     border-radius: 7px;
     /*-moz-border-radius: 10px;
@@ -919,6 +933,7 @@ input[type="text"] {
 }
 input[type="number"] {
     height:32px;
+    width: 75px;
     font-weight: bold;
     border-radius: 7px;
    /* -moz-border-radius: 10px;
@@ -926,10 +941,15 @@ input[type="number"] {
     -webkit-border-radius: 10px;*/
     /*box-shadow:rgba(0,0,0,0.5) 0px 0px 24px; border-radius:12px;*/
 }
-/* input[type="button"] {
+ #furniture_form input[type="submit"] {
     height: 40px;
-}*/
-
+    width: 100px;
+}
+#room_form input[type="submit"] {
+    height: 40px;
+    width: 100px;
+    float: right;
+}
 
 .f-title{
     font-size: 15px;

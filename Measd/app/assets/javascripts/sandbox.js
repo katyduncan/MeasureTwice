@@ -3,7 +3,7 @@ $(document).ready(function(){
 
  var roomWidth = 400;
  var roomLength = 250;
- var line = draw.line(0,500, 800,500).stroke({ width: 1 })
+ var line = draw.line(0,500, 780,500).stroke({ width: 1 })
 
  var room = draw.rect(roomWidth,roomLength)
  room.fill('white')
