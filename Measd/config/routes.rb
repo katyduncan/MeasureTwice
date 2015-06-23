@@ -9,7 +9,7 @@ Rails.application.routes.draw do
      get "serve", :on => :member
   end
 
-  get '/auth/facebook/callback' => 'users#new'
+  get '/auth/facebook/callback' => 'users#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
