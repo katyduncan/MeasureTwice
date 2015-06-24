@@ -67,7 +67,7 @@ $(document).ready(function(){
   windowFrame.move(490,410)
   windowFrame.attr({name: 'Window', preserveAspectRatio: 'none'})
 
-  var electric = draw.image('/assets/outlet.png', 25,25)
+  var electric = draw.image('/assets/outlet.png', 12,12)
   electric.move(550,410)
   electric.attr({name: 'Power Outlet', preserveAspectRatio: 'none'})
 
@@ -122,8 +122,8 @@ $(document).ready(function(){
     clone.draggable()
     sandboxFurn.add(clone)
     clone.attr('name', $('#furn_name').val())
-    clone.width($('#furn_width').val())
-    clone.height($('#furn_length').val())
+    clone.width($('#furn_width').val() * convertToPixels)
+    clone.height($('#furn_length').val() * convertToPixels)
     $("#furniture_form").hide()
 
     // element.draggable(false)
