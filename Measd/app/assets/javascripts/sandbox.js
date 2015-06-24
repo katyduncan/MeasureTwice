@@ -26,7 +26,7 @@ $(document).ready(function(){
     room.cx(400)
     room.cy(200)
     $('#room_form').hide();
-  })
+  });
 
   var nightstand = draw.image('/assets/nightstand.png', 20,20)
   nightstand.move(10, 410)
@@ -109,9 +109,74 @@ $(document).ready(function(){
       $('#furn_length').val(this.height())
       // $('#furn_rotation').val(this.transform('rotation'))
       clone = this.clone()
-    })
-  })
+    });
+  });
 
+
+  //update the furniture based on form input
+  $('#furniture_form').on('submit', function(e){
+    e.preventDefault()
+    clone.move(10,10)
+    clone.draggable()
+    sandboxFurn.add(clone)
+    clone.attr('name', $('#furn_name').val())
+    clone.width($('#furn_width').val())
+    clone.height($('#furn_length').val())
+    $("#furniture_form").hide()
+
+    // element.draggable(false)
+    // element.transform({ rotation: $('#furn_rotation').val() })
+    // element.draggable()
+
+  });
+  // var svg_string = draw.svg();
+  // submitFloorplan(svg_string);
+  // viewFloorplan();
+});
+
+// var submitFloorplan = function(svgExport){
+//     $('#floorplan_button').on('click', function(e) {
+//     e.preventDefault();
+//     console.log('winning');
+//     var sendSvg = $.ajax({
+//       url: 'http://localhost:3000/users/1/floorplans',
+//       type: 'POST',
+//       data_type: 'JSON',
+//       data: {data: svgExport}
+//     })
+//     sendSvg.done(function(response){
+//       console.log(response.svg_data);
+//       // update dropdown with list of floor plans
+//     });
+//     sendSvg.fail(function(response){
+//       alert("You Encountered An Error!");
+//     })
+//   });
+// }
+
+// var viewFloorplan = function(){
+//     $('#floorplan_link').on('click', function(e) {
+//     e.preventDefault();
+//     console.log('Inside viewFloorplan AJAX');
+//     var viewSvg = $.ajax({
+//       url: 'http://localhost:3000/users/1/floorplans/1'
+//     })
+//     sendSvg.done(function(response){
+//       console.log(response);
+//       draw.svg(response['data'])
+//     // clicking on floor plan in dropdown
+//     // ajax call to /floorplans/8
+//     // Floorplan model with svg:string attribute
+//     // in your controller, send back floorplan string
+//     // in the done callback: draw.svg(response['data'])
+//     });
+//     sendSvg.fail(function(response){
+//       alert("You Encountered An Error!");
+//     })
+//   });
+// }
+
+<<<<<<< HEAD
 
   //update the furniture based on form input
   $('#furniture_form').on('submit', function(e){
@@ -131,3 +196,5 @@ $(document).ready(function(){
   })
 
 })
+=======
+>>>>>>> 7412cde0436357cf696e1866a456814fd60d4aed

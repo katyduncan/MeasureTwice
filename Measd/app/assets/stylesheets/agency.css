@@ -184,6 +184,7 @@ fieldset[disabled] .btn-xl.active {
 
 .navbar-default {
     border-color: transparent;
+    color: white;
    /* background-color: #222;*/
 }
 
@@ -995,4 +996,8 @@ input[type="number"] {
 .f-title{
     font-size: 15px;
     font-family: verdana;
+}
+
+.welcome_link{
+    color: white !important;
 }
