@@ -163,17 +163,16 @@ $('svg').on('mousedown','circle[name = "rotationKnob"]',function(ev){
 $('svg').on('mousemove',function(ev){
    if (vmousedown === false){ return; }
    //minus 90 puts it in perspective from object center
-  //mPreviousAngle = 90 - angleGetter(mOldY/mOldX)*(360/(2*Math.PI));
   mPreviousAngle = 90 - Math.atan(mOldY/mOldX)*(360/(2*Math.PI));
   var mPreviousAngle2 = angleGetter(mOldX,mOldY,mPreviousAngle);
   console.log("previous ",mPreviousAngle, mPreviousAngle2);
-  //mCurrentAngle = 90 - angleGetter((ev.pageY- drawOffSetY - centerY)  / (ev.pageX- drawOffSetX - centerX))*(360/(2*Math.PI));
+
 
    mCurrentAngle = 90 - Math.atan( (ev.pageY- drawOffSetY - centerY)  / (ev.pageX- drawOffSetX - centerX) )*(360/(2*Math.PI));
    var mCurrentAngle2 = angleGetter((ev.pageX- drawOffSetX - centerX),(ev.pageY- drawOffSetY - centerY),mCurrentAngle);
   console.log("Current ",mCurrentAngle, mCurrentAngle2);
 
-  deltaAngle = mCurrentAngle - mPreviousAngle;
+  deltaAngle = mCurrentAngle2 - mPreviousAngle2;
 
    //console.log(centerX, centerY);
    //console.log(mOldX, mOldY);
@@ -181,10 +180,6 @@ $('svg').on('mousemove',function(ev){
    // took off degrees = deltaAngle*-1; for testing
 
    degrees = deltaAngle*-1;
-   // if( ((ev.pageY- drawOffSetY - centerY) > 0) && ((ev.pageX- drawOffSetX - centerX) < 0))
-   // {
-   //    degrees = 180 + degrees;
-   // }
 
    //console.log("degrees = "+ degrees);
    degrees = element.transform("rotation") + degrees;
@@ -195,8 +190,8 @@ $('svg').on('mousemove',function(ev){
    //console.log(degrees);
    element.rotate(degrees);
    set1.rotate(degrees, centerX, centerY);
-   // mOldX = ev.pageX - drawOffSetX - centerX;
-   // mOldY = ev.pageY - drawOffSetY - centerY;
+   mOldX = ev.pageX - drawOffSetX - centerX;
+   mOldY = ev.pageY - drawOffSetY - centerY;
 });//end mousemove event
 
 $('svg').on('mouseup',function(ev){
@@ -257,6 +252,12 @@ $('svg').on('click', 'g[name="sandbox"] image', function(){
 
 
 var angleGetter = function (x,y,degree){
+  if(degree == 90 || degree == 0 || degree == 180){
+    return degree;
+  }
+  if(x < 0 &&  degree == 90){
+    return 270;
+  }
   if(x > 0 && y > 0){
     return degree;
   }
