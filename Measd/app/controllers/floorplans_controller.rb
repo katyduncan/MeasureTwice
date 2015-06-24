@@ -5,6 +5,7 @@ def index
 
   def show
     @floorplans = Floorplan.find(params[:id])
+    render json: {data: @floorplan.svg_data}
   end
 
   def serve
@@ -20,18 +21,27 @@ def index
   end
 
   def create
-    p params
+    p "MADE IT TO RUBY CREATE CONTROLLER"
+    p params[:data]
     @user = User.find(params[:user_id])
-    @floorplans = @user.floorplans.new(floorplan_params) do |t|
-      if params[:floorplan][:sandbox]
-        t.sandbox = params[:floorplan][:sandbox].read
-        t.filename = params[:floorplan][:sandbox].original_filename
-        t.mime_type = params[:floorplan][:sandbox].content_type
-      end
-    end
-    if @floorplans.save
-      redirect_to user_floorplan_path(@user, @floorplans)
-      # add a notice that floorplan saved successfully
+    @floorplan = @user.floorplans.new(svg_data: params[:data])
+    p @floorplan
+    # @floorplans = @user.floorplans.new(floorplan_params) do |t|
+    #   if params[:floorplan][:sandbox]
+    #     t.sandbox = params[:floorplan][:sandbox].read
+    #     t.filename = params[:floorplan][:sandbox].original_filename
+    #     t.mime_type = params[:floorplan][:sandbox].content_type
+    #   end
+    # end
+    # if @floorplans.save
+    #   redirect_to user_floorplan_path(@user, @floorplans)
+    #   # add a notice that floorplan saved successfully
+    # else
+    #   render :action => "new"
+    # end
+    if @floorplan.save
+      render json: @floorplan
+      # redirect_to user_floorplan_path(@user, @floorplan)
     else
       render :action => "new"
     end
@@ -55,6 +65,6 @@ def index
 
   private
     def floorplan_params
-      params.require(:floorplan).permit(params[:floorplan][:sandbox], :user_id, :name)
+      # params.require(:floorplan).permit(params[:floorplan][:sandbox], :user_id, :name)
     end
 end
