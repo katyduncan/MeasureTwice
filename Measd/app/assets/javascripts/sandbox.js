@@ -13,13 +13,15 @@ $(document).ready(function(){
   room.cx(400)
   room.cy(200)
 
-  $('#room_width').val(room.width())
-  $('#room_length').val(room.height())
+  $('#room_width').val(room.width() * convertToInches)
+  $('#room_length').val(room.height() * convertToInches)
 
   $('#room_form').submit(function(e){
     e.preventDefault();
-    room.width($('#room_width').val())
-    room.height($('#room_length').val())
+    room.width($('#room_width').val() * convertToPixels)
+    room.height($('#room_length').val() * convertToPixels)
+    room.cx(400)
+    room.cy(200)
     $('#room_form').hide();
   })
 
