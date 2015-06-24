@@ -1,7 +1,7 @@
 
 
 <!-- Navigation...bar-clear-color class to clear navbar background.. -->
-<nav class="navbar navbar-default navbar-fixed-top bar-clear-color">
+<nav class="navbar navbar-default navbar-fixed-top bar-clear-color" id="navbar_welcome">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
@@ -11,7 +11,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll" href="#page-top">Measure it Twice!</a>
+            <a class="navbar-brand page-scroll welcome_link" href="#page-top">Measure it Twice!</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -27,10 +27,10 @@
                     <a class="page-scroll" href="#portfolio">Portfolio</a>
                 </li> -->
                 <li>
-                    <a class="page-scroll" href="#about">About</a>
+                    <a class="page-scroll welcome_link" href="#about">About</a>
                 </li>
                 <li>
-                <%= link_to "Enter", "/auth/facebook", id: "sign_in" %>
+                <%= link_to "Enter", "/auth/facebook", id: "sign_in", class: "welcome_link" %>
                 </li>
               <!--   <li>
                     <a class="page-scroll" href="#team">Team</a>

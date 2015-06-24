@@ -25,3 +25,7 @@
  float: right;
  padding: 2px;
 }
+
+#floorplan_button {
+  margin: 2em;
+}
