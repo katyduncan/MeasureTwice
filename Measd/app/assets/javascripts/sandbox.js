@@ -7,6 +7,9 @@ $(document).ready(function(){
   var roomLength = 288;
   var line = draw.line(0,400, 800,400).stroke({ width: 1 })
 
+  var trash = draw.image('/assets/trash.png', 40, 50)
+  trash.move(750,340)
+
   var room = draw.rect(roomWidth,roomLength)
   room.fill('white')
   room.stroke({color: 'black', width: 7, linejoin: 'round'})
@@ -66,16 +69,6 @@ $(document).ready(function(){
   electric.move(550,410)
   electric.attr({name: 'Power Outlet', preserveAspectRatio: 'none'})
 
-  var intersectable = draw.group()
-  intersectable.add(nightstand)
-  intersectable.add(bed)
-  intersectable.add(desk)
-  intersectable.add(couch)
-  intersectable.add(sofa)
-  intersectable.add(tvStand)
-  intersectable.add(doorLeft)
-  intersectable.add(room)
-
   var toolBoxFurn = draw.group()
   toolBoxFurn.add(nightstand)
   toolBoxFurn.add(bed)
@@ -88,14 +81,23 @@ $(document).ready(function(){
   toolBoxFurn.add(windowFrame)
   toolBoxFurn.add(electric)
 
-  var sandboxFurn = draw.group()
-  sandboxFurn.attr('name', 'sandbox')
+  var sandboxFurn = draw.group();
+  sandboxFurn.attr('name', 'sandbox');
   var element;
   var clone;
 
   //select furniture from sandbox
-  $('svg').on('click', 'g[name="sandbox"] image', function(){
-    element = SVG.get(this.getAttribute('id'))
+  $('svg').on('mousedown', 'g[name="sandbox"] image', function(){
+    element = SVG.get(this.getAttribute('id'));
+  })
+
+  $('svg').on('mouseup', 'g[name="sandbox"] image', function(){
+    if (element.inside(trash.cx(),trash.cy()) ||
+        element.inside(trash.x(), trash.y())
+        )
+    {
+      element.remove();
+    }
   })
 
   //toolbox click
@@ -111,21 +113,21 @@ $(document).ready(function(){
   })
 
 
-    //update the furniture based on form input
-    $('#furniture_form').on('submit', function(e){
-      e.preventDefault()
-      clone.move(10,10)
-      clone.draggable()
-      sandboxFurn.add(clone)
-      clone.attr('name', $('#furn_name').val())
-      clone.width($('#furn_width').val())
-      clone.height($('#furn_length').val())
-      $("#furniture_form").hide()
+  //update the furniture based on form input
+  $('#furniture_form').on('submit', function(e){
+    e.preventDefault()
+    clone.move(10,10)
+    clone.draggable()
+    sandboxFurn.add(clone)
+    clone.attr('name', $('#furn_name').val())
+    clone.width($('#furn_width').val())
+    clone.height($('#furn_length').val())
+    $("#furniture_form").hide()
 
-      // element.draggable(false)
-      // element.transform({ rotation: $('#furn_rotation').val() })
-      // element.draggable()
-
-    })
+    // element.draggable(false)
+    // element.transform({ rotation: $('#furn_rotation').val() })
+    // element.draggable()
 
   })
+
+})
