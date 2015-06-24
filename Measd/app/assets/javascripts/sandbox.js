@@ -1,8 +1,9 @@
 $(document).ready(function(){
   var draw = SVG('drawing').size(800, 600);
+  var elem = document.getElementById('drawing');
 
-  var drawOffSetX = draw.offsetLeft;
-  var drawOffSetY = draw.offsetTop;
+  var drawOffSetX = elem.offsetLeft;
+  var drawOffSetY = elem.offsetTop;
 
   var roomWidth = 550;
   var roomLength = 350;
