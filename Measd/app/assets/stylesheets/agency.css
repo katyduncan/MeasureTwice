@@ -930,7 +930,7 @@ h3{
  font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-input[type="text"] {
+input[type="text"],input[type="url"] {
     height:32px;
     width: 150px;
     font-weight: bold;
@@ -962,6 +962,17 @@ input[type="number"] {
     background-color: white;
 }
 
+#new_furniture_form {
+    border: 3px solid red;
+    position: absolute;
+    left: 42%;
+    top: 175px;
+    width: 16%;
+    text-align: center;
+    display: none;
+    background-color: white;
+}
+
 /*#furniture_form input[type="submit"] {
     height: 40px;
     width: 100px;
@@ -971,7 +982,7 @@ input[type="number"] {
     border: 3px solid red;
     position: absolute;
     left: 42%;
-    top: 275px;
+    top: 250px;
     width: 16%;
     text-align: center;
     background-color: white;
