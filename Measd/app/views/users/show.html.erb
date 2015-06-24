@@ -49,22 +49,21 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2 class="section-heading">Measure it!</h2>
-                <h4 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h4>
             </div>
         </div>
         <div class="row">
             <div class="col-md-2">
                 <div class="fa-border text-left" id="furniture_info">
-                   <form id="furniture_form">
+                   <form id="old_furniture_form">
                      <label class="f-title"><i class="fa fa-pencil-square fa-border"></i>Selected Furniture</label><br><br>
                      <label>Name:</label><br>
-                     <input id="furn_name" type="text" name="name"><br>
+                     <input id="old_furn_name" type="text" name="name"><br>
                      <label>Width:</label><br>
-                     <input id="furn_width" type="number" name="width"><br>
+                     <input id="old_furn_width" type="number" name="width"><br>
                      <label>Length:</label><br>
-                     <input id="furn_length" type="number" name="length"><br>
+                     <input id="old_furn_length" type="number" name="length"><br>
                      <label>Rotation:</label></br>
-                     <input id="furn_rotation" type="number" name="rotation"><br><br>
+                     <input id="old_furn_rotation" type="number" name="rotation"><br><br>
                      <input class="btn btn-block btn-success btn-lg" type="submit">
                  </form>
                 </div>
@@ -78,12 +77,12 @@
             <!-- <div class="row"> -->
             <div class="col-md-2" id="room_info">
                 <div class="fa-border text-right">
-                   <form id="room_form">
+                   <form id="old_room_form">
                      <label class="f-title"><i class="fa fa-pencil-square fa-border"></i>Room Dimensions</label><br><br>
                      <label>Width:</label><br>
-                     <input id="room_width" type="number" name="width"><br>
+                     <input id="old_room_width" type="number" name="width"><br>
                      <label>Length:</label><br>
-                     <input id="room_length" type="number" name="length"><br><br>
+                     <input id="old_room_length" type="number" name="length"><br><br>
                      <input class="btn btn-block btn-success btn-lg" type="submit">
                    </form>
                 </div>
@@ -92,6 +91,28 @@
         <!-- </div> -->
     </div>
 </section>
+
+<!-- NEW CENTERED ROOM FORM -->
+<form id="room_form">
+  <label class="f-title"><i class="fa fa-pencil-square fa-border"></i>Room Dimensions</label><br><br>
+  <label>Width:</label><br>
+  <input id="room_width" type="number" name="width"> in<br>
+  <label>Length:</label><br>
+  <input id="room_length" type="number" name="length"> in<br><br>
+  <input class="btn btn-block btn-success btn-lg" type="submit">
+</form>
+
+<!-- NEW CENTERED FURNITURE FORM -->
+<form id="furniture_form">
+     <label class="f-title"><i class="fa fa-pencil-square fa-border"></i>Selected Furniture</label><br><br>
+     <label>Name:</label><br>
+     <input id="furn_name" type="text" name="name"><br>
+     <label>Width:</label><br>
+     <input id="furn_width" type="number" name="width"><br>
+     <label>Length:</label><br>
+     <input id="furn_length" type="number" name="length"><br><br>
+     <input class="btn btn-block btn-success btn-lg" type="submit">
+ </form>
 
 <!-- Portfolio Grid Section -->
 <section id="portfolio" class="bg-light-gray">
