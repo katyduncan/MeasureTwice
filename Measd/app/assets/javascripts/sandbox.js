@@ -1,6 +1,7 @@
 $(document).ready(function(){
   var draw = SVG('drawing').size(800, 500)
 
+  var roomName = "My First Room"
   var convertToInches = .5
   var convertToPixels = 2
   var roomWidth = 432;
@@ -16,6 +17,7 @@ $(document).ready(function(){
   room.cx(400)
   room.cy(200)
 
+  $('#room_name').val(roomName)
   $('#room_width').val(room.width() * convertToInches)
   $('#room_length').val(room.height() * convertToInches)
 
@@ -175,26 +177,3 @@ $(document).ready(function(){
 //     })
 //   });
 // }
-
-<<<<<<< HEAD
-
-  //update the furniture based on form input
-  $('#furniture_form').on('submit', function(e){
-    e.preventDefault()
-    clone.move(10,10)
-    clone.draggable()
-    sandboxFurn.add(clone)
-    clone.attr('name', $('#furn_name').val())
-    clone.width($('#furn_width').val() * convertToPixels)
-    clone.height($('#furn_length').val() * convertToPixels)
-    $("#furniture_form").hide()
-
-    // element.draggable(false)
-    // element.transform({ rotation: $('#furn_rotation').val() })
-    // element.draggable()
-
-  })
-
-})
-=======
->>>>>>> 7412cde0436357cf696e1866a456814fd60d4aed
