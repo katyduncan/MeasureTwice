@@ -2,7 +2,7 @@
 /*shaikhmajdi [4:31 PM]4:31*/
 #drawing {
  /*border: 1px solid red;*/
- height: 600px;
+ height: 500px;
  width: 800px;
  /*float: left;*/
  outline: 3px solid black;
@@ -24,4 +24,8 @@
  height: 400px;
  float: right;
  padding: 2px;
+}
+
+#floorplan_button {
+  margin: 2em;
 }

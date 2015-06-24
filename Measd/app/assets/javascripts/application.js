@@ -15,4 +15,5 @@
 //= require svg
 //= require svg_draggable
 //= require turbolinks
+//= require bootstrap
 //= require_tree .

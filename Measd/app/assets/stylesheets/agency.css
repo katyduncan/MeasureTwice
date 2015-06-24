@@ -184,12 +184,19 @@ fieldset[disabled] .btn-xl.active {
 
 .navbar-default {
     border-color: transparent;
-    background-color: #222;
+    color: white;
+   /* background-color: #222;*/
+}
+
+.bar-clear-color {
+    background-color: rgba(0,0,0,0) !important;
+    border: none !important;
 }
 
 .navbar-default .navbar-brand {
     font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
     color: #fed136;
+    height: 10px;
 }
 
 .navbar-default .navbar-brand:hover,
@@ -223,6 +230,9 @@ fieldset[disabled] .btn-xl.active {
     font-weight: 400;
     letter-spacing: 1px;
     color: #fff;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+
 }
 
 .navbar-default .nav li a:hover,
@@ -355,7 +365,7 @@ section h3.section-subheading {
 
 @media(min-width:768px) {
     section {
-        padding: 150px 0;
+        padding: 100px 0;
     }
 }
 
@@ -921,7 +931,7 @@ h3{
  font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-input[type="text"] {
+input[type="text"],input[type="url"] {
     height:32px;
     width: 150px;
     font-weight: bold;
@@ -941,17 +951,53 @@ input[type="number"] {
     -webkit-border-radius: 10px;*/
     /*box-shadow:rgba(0,0,0,0.5) 0px 0px 24px; border-radius:12px;*/
 }
- #furniture_form input[type="submit"] {
+
+#furniture_form {
+    border: 3px solid red;
+    position: absolute;
+    left: 42%;
+    top: 225px;
+    width: 16%;
+    text-align: center;
+    display: none;
+    background-color: white;
+}
+
+#new_furniture_form {
+    border: 3px solid red;
+    position: absolute;
+    left: 42%;
+    top: 175px;
+    width: 16%;
+    text-align: center;
+    display: none;
+    background-color: white;
+}
+
+/*#furniture_form input[type="submit"] {
     height: 40px;
     width: 100px;
+}*/
+
+#room_form {
+    border: 3px solid red;
+    position: absolute;
+    left: 42%;
+    top: 250px;
+    width: 16%;
+    text-align: center;
+    background-color: white;
 }
-#room_form input[type="submit"] {
+/*#room_form input[type="submit"] {
     height: 40px;
     width: 100px;
-    float: right;
-}
+}*/
 
 .f-title{
     font-size: 15px;
     font-family: verdana;
+}
+
+.welcome_link{
+    color: white !important;
 }
