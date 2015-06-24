@@ -32,6 +32,10 @@ $(document).ready(function(){
   bed.move(40,510)
   bed.attr({name: 'Bed', preserveAspectRatio: 'none'})
 
+  //var rect = draw.rect.fill('images/shade.jpg')
+  //var test = rect.fill(draw.image('/assets/couch.png', 90, 40))
+  //rect.move(100,100)
+
   var desk = draw.image('/assets/desk.png', 60,30)
   desk.move(110,510)
   desk.attr({name: 'Desk', preserveAspectRatio: 'none'})
@@ -128,9 +132,6 @@ $(document).ready(function(){
     set1.add(knob); set1.add(connectKnob); set1.add(connectLine);
     var vmousedown = false;
     var mouseX, mouseY;
-    var deltaX_old = 0;
-    var deltaY_old = 0;
-    var deltaX,deltaY;
     var centerX,centerY;
     var mOldX,mOldY;
     var mPreviousAngle, mCurrentAngle;// both are angles relative to center of object
@@ -138,9 +139,7 @@ $(document).ready(function(){
 //end variable intialization
     $('svg').on('click', function(){
       if(a>-1){ a -= 1; }
-        //console.log("event -",a);
-       //console.log(this.getAttribute('id'));
-      // console.log(element.type);
+
       if(a == -1 ){
         selectTop.plot(0,0,0,0).stroke({ width: 1});
         selectBottom.plot(0,0,0,0).stroke({ width: 1});
@@ -168,8 +167,8 @@ $('svg').on('mousemove',function(ev){
    mCurrentAngle = 90 - Math.atan( (ev.pageY- drawOffSetY - centerY)  / (ev.pageX- drawOffSetX - centerX) )*(360/(2*Math.PI));
    deltaAngle = mCurrentAngle - mPreviousAngle;
 
-   console.log(centerX, centerY);
-   console.log(mOldX, mOldY);
+   //console.log(centerX, centerY);
+   //console.log(mOldX, mOldY);
    //console.log(mPreviousAngle,mCurrentAngle,deltaAngle);
    degrees = deltaAngle*-1;
    if( ((ev.pageY- drawOffSetY - centerY) > 0) && ((ev.pageX- drawOffSetX - centerX) < 0))
@@ -177,13 +176,13 @@ $('svg').on('mousemove',function(ev){
       degrees = 180 + degrees;
    }
 
-   console.log("degrees = "+ degrees);
+   //console.log("degrees = "+ degrees);
    degrees = element.transform("rotation") + degrees;
 
    if(/*Math.abs(degrees)*/degrees > 360){
      degrees = degrees % 360;
    }
-   console.log(degrees);
+   //console.log(degrees);
    element.rotate(degrees);
    set1.rotate(degrees, centerX, centerY);
    mOldX = ev.pageX - drawOffSetX - centerX;
@@ -204,6 +203,24 @@ $('svg').on('click', 'g[name="sandbox"] image', function(){
       element = SVG.get(this.getAttribute('id'))
 
     if(a == 1 || 0 ){
+       // var cx = element.x();
+       // var cy = element.y();
+      draw.rotate(0,0,0);
+      sandboxFurn.rotate(0);
+
+
+      set1.rotate(element.transform("rotation"), centerX, centerY);
+      console.log('***************************');
+      console.log(element.transform());
+      set1.each(function(){ console.log(this.transform() )});
+      console.log('***************************');
+      var tx = element.transform("x");
+      var ty = element.transform("y");
+
+      set1.transform({x: tx});
+      set1.transform({y: ty});
+
+      //element.transform({ rotation: 37.5 })
        var x = element.x() - padding;
        var x2 = x + element.width() + padding;
        var y = element.y() - padding;
@@ -215,6 +232,14 @@ $('svg').on('click', 'g[name="sandbox"] image', function(){
         knob.radius(4); knob.move(x-2 +(x2-x)/2,y2+18)
         connectKnob.radius(4); connectKnob.move(x-2 +(x2-x)/2,y2);
         connectLine.plot(x+2 +(x2-x)/2,y2+4,x+2 +(x2-x)/2,y2+17).stroke({ width: 1});
+        // draw.rotate(0);
+        // sandboxFurn.rotate(0)
+
+        //console.log(cx,cy);
+        //set1.rotate(0)
+        // set1.rotate(element.transform("rotation"), centerX, centerY)
+
+
      }
   })
 
