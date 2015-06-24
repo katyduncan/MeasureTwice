@@ -120,8 +120,8 @@ $(document).ready(function(){
     clone.draggable()
     sandboxFurn.add(clone)
     clone.attr('name', $('#furn_name').val())
-    clone.width($('#furn_width').val())
-    clone.height($('#furn_length').val())
+    clone.width($('#furn_width').val() * convertToPixels)
+    clone.height($('#furn_length').val() * convertToPixels)
     $("#furniture_form").hide()
 
     // element.draggable(false)
