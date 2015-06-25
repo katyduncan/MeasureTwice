@@ -15,7 +15,7 @@ $(document).ready(function(){
   var line = draw.line(0,400, 800,400).stroke({ width: 1 });
 
   var trash = draw.image('/assets/trash.png', 40, 50);
-  trash.move(735,340);
+  trash.move(730,340);
   trash.attr({name: 'trashcan'});
   var trashHighlight = draw.ellipse(trash.width()+10,trash.height()+10);
   trashHighlight.fill("yellow")
@@ -25,7 +25,7 @@ $(document).ready(function(){
   trashHighlight.hide();
 
   var custom = draw.image('/assets/custom.png', 70, 70)
-  custom.move(720, 410)
+  custom.move(715, 410)
   custom.attr('name', 'custom')
 
   var room = draw.rect(roomWidth,roomLength)
@@ -59,44 +59,48 @@ $(document).ready(function(){
   scaleWords.move(roomCornerX - scaleWidth + 2, roomCornerY - 20)
 
   var nightstand = draw.image('/assets/nightstand.png', 20,20)
-  nightstand.move(10, 410)
+  nightstand.move(15, 410)
   nightstand.attr({name: 'Nightstand', preserveAspectRatio: 'none'})
 
   var bed = draw.image('/assets/bed.png', 60, 80)
-  bed.move(40,410)
+  bed.move(50,410)
   bed.attr({name: 'Bed', preserveAspectRatio: 'none'})
 
   var desk = draw.image('/assets/desk.png', 60,30)
-  desk.move(110,410)
+  desk.move(125,410)
   desk.attr({name: 'Desk', preserveAspectRatio: 'none'})
 
   var couch = draw.image('/assets/couch.png', 90,40)
-  couch.move(180, 410)
+  couch.move(200, 410)
   couch.attr({name: 'Couch', preserveAspectRatio: 'none'})
 
   var sofa = draw.image('/assets/sofa.png', 50,40)
-  sofa.move(280,410)
+  sofa.move(305,410)
   sofa.attr({name: 'Sofa', preserveAspectRatio: 'none'})
 
+  var roundTable = draw.image('/assets/roundtable.png', 60,60)
+  roundTable.move(370,410)
+  roundTable.attr({name: 'Round Table', preserveAspectRatio: 'none'})
+
   var tvStand = draw.image('/assets/tvstand.png', 60,20)
-  tvStand.move(340,410)
+  tvStand.move(445,410)
   tvStand.attr({name: 'TV Stand', preserveAspectRatio: 'none'})
 
   var doorLeft = draw.image('/assets/doorleft.png', 30,30)
-  doorLeft.move(410,410)
+  doorLeft.move(520,410)
   doorLeft.attr({name: 'Door', preserveAspectRatio: 'none'})
 
 
   var doorRight = draw.image('/assets/doorright.png', 30,30)
-  doorRight.move(450,410)
+  doorRight.move(565,410)
   doorRight.attr({name: 'Door', preserveAspectRatio: 'none'})
 
   var windowFrame = draw.image('/assets/window.png', 50,6)
-  windowFrame.move(490,410)
+  windowFrame.move(610,410)
   windowFrame.attr({name: 'Window', preserveAspectRatio: 'none'})
 
   var electric = draw.image('/assets/outlet.png', 12,12)
-  electric.move(550,410)
+  electric.move(675,410)
   electric.attr({name: 'Power Outlet', preserveAspectRatio: 'none'})
 
   var toolBoxFurn = draw.group()
@@ -105,6 +109,7 @@ $(document).ready(function(){
   toolBoxFurn.add(desk)
   toolBoxFurn.add(couch)
   toolBoxFurn.add(sofa)
+  toolBoxFurn.add(roundTable)
   toolBoxFurn.add(tvStand)
   toolBoxFurn.add(doorLeft)
   toolBoxFurn.add(doorRight)
