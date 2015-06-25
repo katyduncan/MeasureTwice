@@ -34,6 +34,8 @@ $(document).ready(function(){
 
   $('#room_form').submit(function(e){
     e.preventDefault();
+    roomName = $('#room_name').val()
+    console.log(roomName)
     room.width($('#room_width').val() * convertToPixels)
     room.height($('#room_length').val() * convertToPixels)
     room.cx(400)
@@ -220,6 +222,7 @@ $(document).ready(function(){
     }
   });
 
+
   // Redraws select box
   $('svg').on('click', 'g[name="sandbox"] image', function(){
     if(a==-1){a +=2;}
@@ -263,28 +266,34 @@ $(document).ready(function(){
   // })
   // var svg_string = draw.svg();
   // submitFloorplan(svg_string);
-  // viewFloorplan();
-//}); katie found this ********************************************
+  var svg_string = draw.svg();
+  $('#floorplan_button').on('click', function(e){
+    e.preventDefault();
+    submitFloorplan(roomName, svg_string)
+  });
 
-// var submitFloorplan = function(svgExport){
-//     $('#floorplan_button').on('click', function(e) {
-//     e.preventDefault();
-//     console.log('winning');
-//     var sendSvg = $.ajax({
-//       url: 'http://localhost:3000/users/1/floorplans',
-//       type: 'POST',
-//       data_type: 'JSON',
-//       data: {data: svgExport}
-//     })
-//     sendSvg.done(function(response){
-//       console.log(response.svg_data);
-//       // update dropdown with list of floor plans
-//     });
-//     sendSvg.fail(function(response){
-//       alert("You Encountered An Error!");
-//     })
-//   });
-// }
+
+var submitFloorplan = function(roomName, svgExport) {
+    console.log(roomName);
+    console.log('winning');
+    // console.log($(this))
+    var sendSvg = $.ajax({
+      url: window.location.href + '/floorplans',
+      type: 'POST',
+      data_type: 'JSON',
+      data: {name: roomName, data: svgExport}
+    })
+    sendSvg.done(function(response){
+      // console.log(response.name);
+      // console.log(response.svg_data);
+      // if @user.floorplans.length < 10 append response.name to ul class="floorplan-list"
+      $('ul .floorplan-list').append('<li><a href="#">'+response.name+'</a></li>')
+      // update dropdown with list of floor plans
+    });
+    sendSvg.fail(function(response){
+      alert("You Encountered An Error!");
+    })
+}
 
 // var viewFloorplan = function(){
 //     $('#floorplan_link').on('click', function(e) {
