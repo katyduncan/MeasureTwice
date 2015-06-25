@@ -3,27 +3,26 @@ $(document).ready(function(){
   var elem = document.getElementById('drawing');
   var drawOffSetX = elem.offsetLeft;
   var drawOffSetY = elem.offsetTop;
+  var selected = false;
 
-  var roomName = "My First Room"
   var convertToInches = .5
   var convertToPixels = 2
+
+  var roomName = "My First Room"
   var roomWidth = 432;
   var roomLength = 288;
+
   var line = draw.line(0,400, 800,400).stroke({ width: 1 });
+
   var trash = draw.image('/assets/trash.png', 40, 50);
   trash.move(735,340);
   trash.attr({name: 'trashcan'});
-  var yellowRect = draw.rect(trash.width()+10,trash.height()+10);
-  yellowRect.fill("yellow")
-  yellowRect.cx(trash.cx());
-  yellowRect.cy(trash.cy());
-  yellowRect.back();
-  yellowRect.hide();
- var selected = false;
-
-  var trash = draw.image('/assets/trash.png', 40, 50)
-  trash.move(735,340)
-  trash.attr('name', 'trashcan')
+  var trashHighlight = draw.ellipse(trash.width()+10,trash.height()+10);
+  trashHighlight.fill("yellow")
+  trashHighlight.cx(trash.cx());
+  trashHighlight.cy(trash.cy());
+  trashHighlight.back();
+  trashHighlight.hide();
 
   var custom = draw.image('/assets/custom.png', 70, 70)
   custom.move(720, 410)
@@ -49,6 +48,15 @@ $(document).ready(function(){
     room.cy(200)
     $('#room_form').hide();
   });
+
+  var roomCornerX = room.x() + room.width() - 3
+  var roomCornerY = room.y() - 3
+  var scaleWidth = 48
+  var firstTic = draw.line(roomCornerX, roomCornerY - 20, roomCornerX, roomCornerY - 5).stroke({color: 'blue', width: 2})
+  var scaleBody = draw.line(roomCornerX, roomCornerY - 5, roomCornerX - scaleWidth, roomCornerY - 5).stroke({color: 'blue', width: 2})
+  var finalTic = draw.line(roomCornerX - scaleWidth, roomCornerY - 5, roomCornerX - scaleWidth, roomCornerY - 20).stroke({color: 'blue', width: 2})
+  var scaleWords = draw.image('/assets/scale.png', 42, 9)
+  scaleWords.move(roomCornerX - scaleWidth + 2, roomCornerY - 20)
 
   var nightstand = draw.image('/assets/nightstand.png', 20,20)
   nightstand.move(10, 410)
@@ -173,7 +181,7 @@ $(document).ready(function(){
         knob.radius(0);
         connectKnob.radius(0);
         connectLine.plot(0,0,0,0).stroke({ width: 1});
-        yellowRect.hide()
+        trashHighlight.hide()
         selected = false
       }
   })
@@ -272,7 +280,7 @@ $(document).ready(function(){
       knob.radius(4); knob.move(x-2 +(x2-x)/2,y2+18)
       connectKnob.radius(4); connectKnob.move(x-2 +(x2-x)/2,y2);
       connectLine.plot(x+2 +(x2-x)/2,y2+4,x+2 +(x2-x)/2,y2+17).stroke({ width: 1});
-      yellowRect.show();
+      trashHighlight.show();
       selected = true;
     }
   })
