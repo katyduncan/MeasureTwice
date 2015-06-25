@@ -9,7 +9,11 @@ $(document).ready(function(){
   var line = draw.line(0,400, 800,400).stroke({ width: 1 })
 
   var trash = draw.image('/assets/trash.png', 40, 50)
-  trash.move(750,340)
+  trash.move(735,340)
+
+  var custom = draw.image('/assets/custom.png', 70, 70)
+  custom.move(720, 410)
+  custom.attr('name', 'custom')
 
   var room = draw.rect(roomWidth,roomLength)
   room.fill('white')
@@ -36,7 +40,7 @@ $(document).ready(function(){
 
   var bed = draw.image('/assets/bed.png', 60, 80)
   bed.move(40,410)
-  bed.attr({name: 'Bed'})
+  bed.attr({name: 'Bed', preserveAspectRatio: 'none'})
 
   var desk = draw.image('/assets/desk.png', 60,30)
   desk.move(110,410)
@@ -87,6 +91,10 @@ $(document).ready(function(){
   sandboxFurn.attr('name', 'sandbox');
   var element;
   var clone;
+
+  $('svg').on('click', 'image[name="custom"]', function(){
+    $('#new_furniture_form').show()
+  })
 
   //select furniture from sandbox
   $('svg').on('mousedown', 'g[name="sandbox"] image', function(){
