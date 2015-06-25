@@ -20,7 +20,7 @@
                         <ul class="floorplan-list">
                         <% if @user.floorplans.count > 0 %>
                             <% @user.floorplans.each do |plan| %>
-                            <li><a href="#"><%= plan.name %></a></li>
+                            <li><a href=<%= @user.id %>/floorplans/<%= plan.id %>><%= plan.name %></a></li>
                             <% end %>
                         <% end %>
                         </ul>
@@ -99,6 +99,9 @@
       <input id="new_length" type="number" name="length"> in<br><br>
       <input class="btn btn-block btn-success btn-lg" type="submit">
   </form>
+
+<div class="svg-test">
+</div>
 
 <footer>
     <div class="container">

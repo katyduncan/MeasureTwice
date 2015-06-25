@@ -4,30 +4,30 @@ $(document).ready(function(){
   var elem = document.getElementById('drawing');
   var drawOffSetX = elem.offsetLeft;
   var drawOffSetY = elem.offsetTop;
-
-  var roomName = "My First Room"
-  var convertToInches = .5
-  var convertToPixels = 2
-  var roomWidth = 432;
-  var roomLength = 288;
-  var line = draw.line(0,400, 800,400).stroke({ width: 1 });
-  var trash = draw.image('/assets/trash.png', 40, 50);
-  trash.move(735,340);
-  trash.attr({name: 'trashcan'});
-  var yellowRect = draw.rect(trash.width()+10,trash.height()+10);
-  yellowRect.fill("yellow")
-  yellowRect.cx(trash.cx());
-  yellowRect.cy(trash.cy());
-  yellowRect.back();
-  yellowRect.hide();
   var selected = false;
 
-  var trash = draw.image('/assets/trash.png', 40, 50)
-  trash.move(735,340)
-  trash.attr('name', 'trashcan')
+  var convertToInches = .5
+  var convertToPixels = 2
+
+  var roomName = "My First Room"
+  var roomWidth = 432;
+  var roomLength = 288;
+
+  var line = draw.line(0,400, 800,400).stroke({ width: 1 });
+
+  var trash = draw.image('/assets/trash.png', 40, 50);
+  trash.move(730,340);
+  trash.attr({name: 'trashcan'});
+
+  var trashHighlight = draw.ellipse(trash.width()+10,trash.height()+10);
+  trashHighlight.fill("yellow")
+  trashHighlight.cx(trash.cx());
+  trashHighlight.cy(trash.cy());
+  trashHighlight.back();
+  trashHighlight.hide();
 
   var custom = draw.image('/assets/custom.png', 70, 70)
-  custom.move(720, 410)
+  custom.move(715, 410)
   custom.attr('name', 'custom')
 
   var room = draw.rect(roomWidth,roomLength)
@@ -43,7 +43,7 @@ $(document).ready(function(){
   $('#room_form').submit(function(e){
     e.preventDefault();
     roomName = $('#room_name').val()
-    console.log(roomName)
+    // console.log(roomName)
     room.width($('#room_width').val() * convertToPixels)
     room.height($('#room_length').val() * convertToPixels)
     room.cx(400)
@@ -51,45 +51,58 @@ $(document).ready(function(){
     $('#room_form').hide();
   });
 
+  var roomCornerX = room.x() + room.width() - 3
+  var roomCornerY = room.y() - 3
+  var scaleWidth = 48
+  var firstTic = draw.line(roomCornerX, roomCornerY - 20, roomCornerX, roomCornerY - 5).stroke({color: 'blue', width: 2})
+  var scaleBody = draw.line(roomCornerX, roomCornerY - 5, roomCornerX - scaleWidth, roomCornerY - 5).stroke({color: 'blue', width: 2})
+  var finalTic = draw.line(roomCornerX - scaleWidth, roomCornerY - 5, roomCornerX - scaleWidth, roomCornerY - 20).stroke({color: 'blue', width: 2})
+  var scaleWords = draw.image('/assets/scale.png', 42, 9)
+  scaleWords.move(roomCornerX - scaleWidth + 2, roomCornerY - 20)
+
   var nightstand = draw.image('/assets/nightstand.png', 20,20)
-  nightstand.move(10, 410)
+  nightstand.move(15, 410)
   nightstand.attr({name: 'Nightstand', preserveAspectRatio: 'none'})
 
   var bed = draw.image('/assets/bed.png', 60, 80)
-  bed.move(40,410)
+  bed.move(50,410)
   bed.attr({name: 'Bed', preserveAspectRatio: 'none'})
 
   var desk = draw.image('/assets/desk.png', 60,30)
-  desk.move(110,410)
+  desk.move(125,410)
   desk.attr({name: 'Desk', preserveAspectRatio: 'none'})
 
   var couch = draw.image('/assets/couch.png', 90,40)
-  couch.move(180, 410)
+  couch.move(200, 410)
   couch.attr({name: 'Couch', preserveAspectRatio: 'none'})
 
   var sofa = draw.image('/assets/sofa.png', 50,40)
-  sofa.move(280,410)
+  sofa.move(305,410)
   sofa.attr({name: 'Sofa', preserveAspectRatio: 'none'})
 
+  var roundTable = draw.image('/assets/roundtable.png', 60,60)
+  roundTable.move(370,410)
+  roundTable.attr({name: 'Round Table', preserveAspectRatio: 'none'})
+
   var tvStand = draw.image('/assets/tvstand.png', 60,20)
-  tvStand.move(340,410)
+  tvStand.move(445,410)
   tvStand.attr({name: 'TV Stand', preserveAspectRatio: 'none'})
 
   var doorLeft = draw.image('/assets/doorleft.png', 30,30)
-  doorLeft.move(410,410)
+  doorLeft.move(520,410)
   doorLeft.attr({name: 'Door', preserveAspectRatio: 'none'})
 
 
   var doorRight = draw.image('/assets/doorright.png', 30,30)
-  doorRight.move(450,410)
+  doorRight.move(565,410)
   doorRight.attr({name: 'Door', preserveAspectRatio: 'none'})
 
   var windowFrame = draw.image('/assets/window.png', 50,6)
-  windowFrame.move(490,410)
+  windowFrame.move(610,410)
   windowFrame.attr({name: 'Window', preserveAspectRatio: 'none'})
 
   var electric = draw.image('/assets/outlet.png', 12,12)
-  electric.move(550,410)
+  electric.move(675,410)
   electric.attr({name: 'Power Outlet', preserveAspectRatio: 'none'})
 
   var toolBoxFurn = draw.group()
@@ -98,6 +111,7 @@ $(document).ready(function(){
   toolBoxFurn.add(desk)
   toolBoxFurn.add(couch)
   toolBoxFurn.add(sofa)
+  toolBoxFurn.add(roundTable)
   toolBoxFurn.add(tvStand)
   toolBoxFurn.add(doorLeft)
   toolBoxFurn.add(doorRight)
@@ -160,23 +174,24 @@ $(document).ready(function(){
   var mOldX,mOldY;
   var mPreviousAngle, mCurrentAngle;// both are angles relative to center of object
   var deltaAngle;
-//end variable intialization
+  //end variable intialization
 
   // clear box when clicking in whitespace
   $('svg').on('click', function(){
-    if(a>-1){ a -= 1; }
 
-    if(a == -1 ){
-      selectTop.plot(0,0,0,0).stroke({ width: 1});
-      selectBottom.plot(0,0,0,0).stroke({ width: 1});
-      selectLeft.plot(0,0,0,0).stroke({ width: 1});
-      selectRight.plot(0,0,0,0).stroke({ width: 1});
-      knob.radius(0);
-      connectKnob.radius(0);
-      connectLine.plot(0,0,0,0).stroke({ width: 1});
-      yellowRect.hide()
-      selected = false
-    }
+      if(a>-1){ a -= 1; }
+
+      if(a == -1 ){
+        selectTop.plot(0,0,0,0).stroke({ width: 1});
+        selectBottom.plot(0,0,0,0).stroke({ width: 1});
+        selectLeft.plot(0,0,0,0).stroke({ width: 1});
+        selectRight.plot(0,0,0,0).stroke({ width: 1});
+        knob.radius(0);
+        connectKnob.radius(0);
+        connectLine.plot(0,0,0,0).stroke({ width: 1});
+        trashHighlight.hide()
+        selected = false
+      }
   })
 
   //rotation knob start
@@ -273,58 +288,59 @@ $(document).ready(function(){
       knob.radius(4); knob.move(x-2 +(x2-x)/2,y2+18)
       connectKnob.radius(4); connectKnob.move(x-2 +(x2-x)/2,y2);
       connectLine.plot(x+2 +(x2-x)/2,y2+4,x+2 +(x2-x)/2,y2+17).stroke({ width: 1});
-      yellowRect.show();
+      trashHighlight.show();
       selected = true;
     }
   })
 
-var svg_string = draw.svg();
-$('#floorplan_button').on('click', function(e){
-  e.preventDefault();
-  submitFloorplan(roomName, svg_string)
-});
 
+  // var svg_string = draw.svg();
 
-var submitFloorplan = function(roomName, svgExport) {
-  var sendSvg = $.ajax({
-    url: window.location.href + '/floorplans',
-    type: 'POST',
-    data_type: 'JSON',
-    data: {name: roomName, data: svgExport}
-  })
-  sendSvg.done(function(response){
-      // if @user.floorplans.length < 10 append response.name to ul class="floorplan-list"
-      $('ul .floorplan-list').append('<li><a href="#">'+response.name+'</a></li>')
+  // var svg_string = $('g[name="sandbox"]')[0]
+  $('#floorplan_button').on('click', function(e){
+    e.preventDefault();
+    var svg_string = sandboxFurn.svg()
+    console.log(svg_string)
+    submitFloorplan(roomName, svg_string)
+  });
+
+  var submitFloorplan = function(roomName, svgExport) {
+    console.log(svgExport)
+    var sendSvg = $.ajax({
+      url: 'http://localhost:3000/users/2/floorplans',
+      type: 'POST',
+      data_type: 'JSON',
+      data: {name: roomName, data: svgExport}
     });
-  sendSvg.fail(function(response){
-    alert("You Encountered An Error!");
-  })
-}
+    sendSvg.done(function(response){
+      // if @user.floorplans.length < 10 append response.name to ul class="floorplan-list"
+      $('ul .floorplan-list').
+      append("<li><a href='users/" + response.user_id +"/floorplans/" + response.id + "'>" + response.name + "</a></li>")
+    });
 
-// var viewFloorplan = function(){
-//     $('#floorplan_link').on('click', function(e) {
-//     e.preventDefault();
-//     console.log('Inside viewFloorplan AJAX');
-//     var viewSvg = $.ajax({
-//       url: 'http://localhost:3000/users/1/floorplans/1'
-//     })
-//     sendSvg.done(function(response){
-//       console.log(response);
-//       draw.svg(response['data'])
-//     // clicking on floor plan in dropdown
-//     // ajax call to /floorplans/8
-//     // Floorplan model with svg:string attribute
-//     // in your controller, send back floorplan string
-//     // in the done callback: draw.svg(response['data'])
-//     });
-//     sendSvg.fail(function(response){
-//       alert("You Encountered An Error!");
-//     })
-//   });
-// }
+    sendSvg.fail(function(response){
+      alert("You Encountered An Error!");
+    });
+  }
 
+  $('.floorplan-list a').on('click', function(e) {
+    e.preventDefault();
+    var link = this.href
+    viewFloorplan(link);
+  });
 
-
+  var viewFloorplan = function(link){
+    var viewSvg = $.ajax({
+      url: link
+    });
+    viewSvg.done(function(response){
+      console.log(response['data'])
+      $('svg').append(draw.svg(response['data']))
+    });
+    viewSvg.fail(function(response){
+      alert("You Encountered An Error!");
+    });
+  }
 })
 
 

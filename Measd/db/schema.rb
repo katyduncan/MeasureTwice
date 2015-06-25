@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150625001354) do
+
+ActiveRecord::Schema.define(version: 20150625171146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +24,7 @@ ActiveRecord::Schema.define(version: 20150625001354) do
     t.datetime "updated_at", null: false
     t.string   "name"
     t.string   "svg_data"
+    t.text     "svgtext"
   end
 
   add_index "floorplans", ["user_id"], name: "index_floorplans_on_user_id", using: :btree
