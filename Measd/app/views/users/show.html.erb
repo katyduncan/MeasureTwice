@@ -13,11 +13,10 @@
                     <a href="#page-top"></a>
                 </li>
                 <li class="dropdown">
-                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Nate's Profile<span class="caret"></span></a>
+                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= @user.name.split.map(&:capitalize).join(' ') %>'s Profile<span class="caret"></span></a>
                    <ul class="dropdown-menu">
-                     <li><a href="#">Floorplan 1</a></li>
-                     <li><a href="#">Floorplan 2</a></li>
-                     <li><a href="#">...</a></li>
+                    <ul class="floorplan-list">
+                     </ul>
                      <li role="separator" class="divider"></li>
                      <li><a href="#">Logout</a></li>
                    </ul>
@@ -65,29 +64,22 @@
         <!-- </div> -->
     </div>
     <div class="container text-center">
-        <form id="room_name_form">
-  <label class="f-title"><i class="fa fa-pencil-square fa-border"></i>Room Dimensions</label><br><br>
-  <label>Width:</label><br>
-  <input id="room_width" type="number" name="width"> in<br>
-  <label>Length:</label><br>
-  <input id="room_length" type="number" name="length"> in<br><br>
-  <input class="btn btn-block btn-success btn-lg" type="submit">
-</form>
-        <button type="button" class="btn btn-info btn-lg" id="floorplan_button">Save Floorplan</button>
+        <a href="/floorplans/new">
+        <button type="button" class="btn btn-info btn-lg" id="floorplan_button">Save Floorplan</button></a>
     </div>
 
 </section>
 
 <!-- NEW CENTERED ROOM FORM -->
 <form id="room_form">
+    <label class="f-title"><i class="fa fa-pencil-square fa-border"></i>New Room</label><br>
     <label class="f-name">Room Name:</label><br>
     <input id="room_name" type="text" name="name"><br>
-    <label class="f-title"><i class="fa fa-pencil-square fa-border"></i>Room Dimensions</label><br><br>
-  <label>Width:</label><br>
-  <input id="room_width" type="number" name="width"> in<br>
-  <label>Length:</label><br>
-  <input id="room_length" type="number" name="length"> in<br><br>
-  <input class="btn btn-block btn-success btn-lg" type="submit">
+    <label>Width:</label><br>
+    <input id="room_width" type="number" name="width"> in<br>
+    <label>Length:</label><br>
+    <input id="room_length" type="number" name="length"> in<br><br>
+    <input class="btn btn-block btn-success btn-lg" type="submit">
 </form>
 
 <!-- NEW CENTERED FURNITURE FORM -->

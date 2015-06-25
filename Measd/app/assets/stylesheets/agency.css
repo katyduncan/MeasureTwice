@@ -978,12 +978,15 @@ input[type="number"] {
     height: 40px;
     width: 100px;
 }*/
+#old_room_form{
+    display:none;
+}
 
 #room_form {
     border: 3px solid red;
     position: absolute;
     left: 42%;
-    top: 250px;
+    top: 225px;
     width: 16%;
     text-align: center;
     background-color: white;

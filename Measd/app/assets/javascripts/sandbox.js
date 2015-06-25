@@ -1,6 +1,7 @@
 $(document).ready(function(){
   var draw = SVG('drawing').size(800, 500)
 
+  var roomName = "My First Room"
   var convertToInches = .5
   var convertToPixels = 2
   var roomWidth = 432;
@@ -16,11 +17,14 @@ $(document).ready(function(){
   room.cx(400)
   room.cy(200)
 
+  $('#room_name').val(roomName)
   $('#room_width').val(room.width() * convertToInches)
   $('#room_length').val(room.height() * convertToInches)
 
   $('#room_form').submit(function(e){
     e.preventDefault();
+    roomName = $('#room_name').val()
+    console.log(roomName)
     room.width($('#room_width').val() * convertToPixels)
     room.height($('#room_length').val() * convertToPixels)
     room.cx(400)
@@ -65,7 +69,7 @@ $(document).ready(function(){
   windowFrame.move(490,410)
   windowFrame.attr({name: 'Window', preserveAspectRatio: 'none'})
 
-  var electric = draw.image('/assets/outlet.png', 25,25)
+  var electric = draw.image('/assets/outlet.png', 12,12)
   electric.move(550,410)
   electric.attr({name: 'Power Outlet', preserveAspectRatio: 'none'})
 
@@ -120,8 +124,8 @@ $(document).ready(function(){
     clone.draggable()
     sandboxFurn.add(clone)
     clone.attr('name', $('#furn_name').val())
-    clone.width($('#furn_width').val())
-    clone.height($('#furn_length').val())
+    clone.width($('#furn_width').val() * convertToPixels)
+    clone.height($('#furn_length').val() * convertToPixels)
     $("#furniture_form").hide()
 
     // element.draggable(false)
@@ -129,30 +133,36 @@ $(document).ready(function(){
     // element.draggable()
 
   });
-  // var svg_string = draw.svg();
-  // submitFloorplan(svg_string);
+  var svg_string = draw.svg();
+  $('#floorplan_button').on('click', function(e){
+    e.preventDefault();
+    submitFloorplan(roomName, svg_string)
+  });
   // viewFloorplan();
 });
 
-// var submitFloorplan = function(svgExport){
-//     $('#floorplan_button').on('click', function(e) {
-//     e.preventDefault();
-//     console.log('winning');
-//     var sendSvg = $.ajax({
-//       url: 'http://localhost:3000/users/1/floorplans',
-//       type: 'POST',
-//       data_type: 'JSON',
-//       data: {data: svgExport}
-//     })
-//     sendSvg.done(function(response){
-//       console.log(response.svg_data);
-//       // update dropdown with list of floor plans
-//     });
-//     sendSvg.fail(function(response){
-//       alert("You Encountered An Error!");
-//     })
-//   });
-// }
+
+var submitFloorplan = function(roomName, svgExport) {
+    console.log(roomName);
+    console.log('winning');
+    // console.log($(this))
+    var sendSvg = $.ajax({
+      url: window.location.href + '/floorplans',
+      type: 'POST',
+      data_type: 'JSON',
+      data: {name: roomName, data: svgExport}
+    })
+    sendSvg.done(function(response){
+      // console.log(response.name);
+      // console.log(response.svg_data);
+      // if @user.floorplans.length < 10 append response.name to ul class="floorplan-list"
+      $('ul .floorplan-list').append('<li><a href="#">'+response.name+'</a></li>')
+      // update dropdown with list of floor plans
+    });
+    sendSvg.fail(function(response){
+      alert("You Encountered An Error!");
+    })
+}
 
 // var viewFloorplan = function(){
 //     $('#floorplan_link').on('click', function(e) {
@@ -175,26 +185,3 @@ $(document).ready(function(){
 //     })
 //   });
 // }
-
-<<<<<<< HEAD
-
-  //update the furniture based on form input
-  $('#furniture_form').on('submit', function(e){
-    e.preventDefault()
-    clone.move(10,10)
-    clone.draggable()
-    sandboxFurn.add(clone)
-    clone.attr('name', $('#furn_name').val())
-    clone.width($('#furn_width').val() * convertToPixels)
-    clone.height($('#furn_length').val() * convertToPixels)
-    $("#furniture_form").hide()
-
-    // element.draggable(false)
-    // element.transform({ rotation: $('#furn_rotation').val() })
-    // element.draggable()
-
-  })
-
-})
-=======
->>>>>>> 7412cde0436357cf696e1866a456814fd60d4aed
