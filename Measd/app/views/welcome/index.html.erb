@@ -26,23 +26,27 @@
                 <li>
                     <a class="page-scroll" href="#portfolio">Portfolio</a>
                 </li> -->
+
+                <% if current_user %>
+                <li>
+                    WELCOME, <%= current_user.name.upcase %>!      |
+                </li>
+                <% end %>
+                <li>
+                     <%= link_to "Enter", "/auth/facebook", id: "sign_in", class: "welcome_link" %>
+                </li>
+
+                <% if current_user %>
+                <li>
+                    <%= link_to "Sign Out", signout_path, id: "sign_in", class: "welcome_link" %>
+                </li>
+                <% else %>
                 <li>
                     <a class="page-scroll welcome_link" href="#about">About</a>
                 </li>
-                <li>
-                    <% if current_user %>
-                    Welcome <%= current_user.name %>!
-                    <%= link_to "Sign Out", signout_path, id: "sign_in", class: "welcome_link" %>
-                    <% else %>
-                     <%= link_to "Enter", "/auth/facebook", id: "sign_in", class: "welcome_link" %>
-                    <% end %>
-                </li>
-              <!--   <li>
-                    <a class="page-scroll" href="#team">Team</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#contact">Contact</a>
-                </li> -->
+
+                <% end %>
+
             </ul>
         </div>
         <!-- /.navbar-collapse -->
