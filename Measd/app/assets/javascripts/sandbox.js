@@ -1,15 +1,26 @@
 $(document).ready(function(){
   var draw = SVG('drawing').size(800, 500)
+  var elem = document.getElementById('drawing');
+  var drawOffSetX = elem.offsetLeft;
+  var drawOffSetY = elem.offsetTop;
 
   var roomName = "My First Room"
   var convertToInches = .5
   var convertToPixels = 2
   var roomWidth = 432;
   var roomLength = 288;
-  var line = draw.line(0,400, 800,400).stroke({ width: 1 })
+  var line = draw.line(0,400, 800,400).stroke({ width: 1 });
+  var trash = draw.image('/assets/trash.png', 40, 50);
+  trash.move(735,340);
+  trash.attr({name: 'trashcan'});
+  var yellowRect = draw.rect(trash.width()+10,trash.height()+10);
+  yellowRect.fill("yellow")
+  yellowRect.cx(trash.cx());
+  yellowRect.cy(trash.cy());
+  yellowRect.back();
+  yellowRect.hide();
+ var selected = false;
 
-  var trash = draw.image('/assets/trash.png', 40, 50)
-  trash.move(750,340)
 
   var room = draw.rect(roomWidth,roomLength)
   room.fill('white')
@@ -90,20 +101,6 @@ $(document).ready(function(){
   var element;
   var clone;
 
-  //select furniture from sandbox
-  $('svg').on('mousedown', 'g[name="sandbox"] image', function(){
-    element = SVG.get(this.getAttribute('id'));
-  })
-
-  $('svg').on('mouseup', 'g[name="sandbox"] image', function(){
-    if (element.inside(trash.cx(),trash.cy()) ||
-        element.inside(trash.x(), trash.y())
-        )
-    {
-      element.remove();
-    }
-  })
-
   //toolbox click
   toolBoxFurn.each(function(){
     this.on('click', function(){
@@ -116,30 +113,150 @@ $(document).ready(function(){
     });
   });
 
-
   //update the furniture based on form input
   $('#furniture_form').on('submit', function(e){
-    e.preventDefault()
-    clone.move(10,10)
-    clone.draggable()
-    sandboxFurn.add(clone)
-    clone.attr('name', $('#furn_name').val())
-    clone.width($('#furn_width').val() * convertToPixels)
-    clone.height($('#furn_length').val() * convertToPixels)
+    e.preventDefault();
+    clone.move(10,10);
+    clone.draggable();
+    sandboxFurn.add(clone);
+    clone.attr('name', $('#furn_name').val());
+    clone.width($('#furn_width').val() * convertToPixels);
+    clone.height($('#furn_length').val() * convertToPixels);
     $("#furniture_form").hide()
 
     // element.draggable(false)
     // element.transform({ rotation: $('#furn_rotation').val() })
     // element.draggable()
-
   });
+
+  var a = -1;
+  var selectTop, selectBottom, selectLeft, selectRight;
+  selectTop = draw.line(0,0,0,0).stroke({width: 1}); selectBottom = draw.line(0,0,0,0).stroke({width: 1}); selectLeft = draw.line(0,0,0,0).stroke({width: 1}); selectRight = draw.line(0,0,0,0).stroke({width: 1});
+  var knob = draw.circle(0).stroke({color: "blue", width: 2});
+  var connectKnob = draw.circle(0);
+  var connectLine = draw.line(0,0,0,0);
+  connectKnob.attr({fill: "blue"});
+  knob.attr({ fill: "green"});
+  knob.attr('name','rotationKnob');
+  var padding=3;
+  var set1 = draw.set();
+  set1.add(selectTop); set1.add(selectBottom); set1.add(selectRight); set1.add(selectLeft);
+  set1.add(knob); set1.add(connectKnob); set1.add(connectLine);
+  var vmousedown = false;
+  var mouseX, mouseY;
+  var centerX,centerY;
+  var mOldX,mOldY;
+  var mPreviousAngle, mCurrentAngle;// both are angles relative to center of object
+  var deltaAngle;
+//end variable intialization
+
+  // clear box when clicking in whitespace
+  $('svg').on('click', function(){
+      if(a>-1){ a -= 1; }
+
+      if(a == -1 ){
+        selectTop.plot(0,0,0,0).stroke({ width: 1});
+        selectBottom.plot(0,0,0,0).stroke({ width: 1});
+        selectLeft.plot(0,0,0,0).stroke({ width: 1});
+        selectRight.plot(0,0,0,0).stroke({ width: 1});
+        knob.radius(0);
+        connectKnob.radius(0);
+        connectLine.plot(0,0,0,0).stroke({ width: 1});
+        yellowRect.hide()
+        selected = false
+      }
+  })
+
+  //rotation knob start
+  $('svg').on('mousedown','circle[name = "rotationKnob"]',function(ev){
+    vmousedown = true;
+    mouseX = ev.pageX;
+    mouseY = ev.pageY;
+    centerX = element.cx();
+    centerY = element.cy();
+    mOldX = ev.pageX - drawOffSetX - centerX;
+    mOldY = ev.pageY - drawOffSetY - centerY;
+  });
+
+  // rotation logic
+  $('svg').on('mousemove',function(ev){
+    if (vmousedown === false){ return; }
+    //minus 90 puts it in perspective from object center
+    mPreviousAngle = 90 - Math.atan(mOldY/mOldX)*(360/(2*Math.PI));
+    var mPreviousAngle2 = angleGetter(mOldX,mOldY,mPreviousAngle);
+    // console.log("previous ",mPreviousAngle, mPreviousAngle2);
+
+
+    mCurrentAngle = 90 - Math.atan( (ev.pageY- drawOffSetY - centerY)  / (ev.pageX- drawOffSetX - centerX) )*(360/(2*Math.PI));
+    var mCurrentAngle2 = angleGetter((ev.pageX- drawOffSetX - centerX),(ev.pageY- drawOffSetY - centerY),mCurrentAngle);
+    // console.log("Current ",mCurrentAngle, mCurrentAngle2);
+    deltaAngle = mCurrentAngle2 - mPreviousAngle2;
+    degrees = deltaAngle*-1;
+    degrees = element.transform("rotation") + degrees;
+
+    if(degrees > 360){
+      degrees = degrees % 360;
+    }
+
+    element.rotate(degrees);
+    set1.rotate(degrees, centerX, centerY);
+    mOldX = ev.pageX - drawOffSetX - centerX;
+    mOldY = ev.pageY - drawOffSetY - centerY;
+  });//end mousemove event
+
+  // mouseup variable
+  $('svg').on('mouseup',function(ev){
+    if (vmousedown === false){ return; }
+     vmousedown = false;
+  });//end mouseup event
+
+  $('svg').on('click', 'image[name="trashcan"]', function(){
+    if(selected){
+      element.remove();
+    }
+  });
+
+
+  // Redraws select box
+  $('svg').on('click', 'g[name="sandbox"] image', function(){
+    if(a==-1){a +=2;}
+    if(a==0){a+=1}
+    element = SVG.get(this.getAttribute('id'))
+    if(a == 1 || 0 ){
+
+      draw.rotate(0,0,0);
+      sandboxFurn.rotate(0);
+      set1.rotate(element.transform("rotation"), centerX, centerY);
+
+      var tx = element.transform("x");
+      var ty = element.transform("y");
+
+      set1.transform({x: tx});
+      set1.transform({y: ty});
+
+      var x = element.x() - padding;
+      var x2 = x + element.width() + padding;
+      var y = element.y() - padding;
+      var y2 = y + element.height() + padding;
+      selectTop.plot(x, y, x2, y ).stroke({ width: 1});
+      selectBottom.plot(x, y2, x2, y2 ).stroke({ width: 1});
+      selectLeft.plot(x, y, x, y2 ).stroke({ width: 1});
+      selectRight.plot(x2, y, x2, y2 ).stroke({ width: 1});
+      knob.radius(4); knob.move(x-2 +(x2-x)/2,y2+18)
+      connectKnob.radius(4); connectKnob.move(x-2 +(x2-x)/2,y2);
+      connectLine.plot(x+2 +(x2-x)/2,y2+4,x+2 +(x2-x)/2,y2+17).stroke({ width: 1});
+      yellowRect.show();
+      selected = true;
+    }
+  })
+
+  // var svg_string = draw.svg();
+  // submitFloorplan(svg_string);
   var svg_string = draw.svg();
   $('#floorplan_button').on('click', function(e){
     e.preventDefault();
     submitFloorplan(roomName, svg_string)
   });
-  // viewFloorplan();
-});
 
 
 var submitFloorplan = function(roomName, svgExport) {
@@ -185,3 +302,30 @@ var submitFloorplan = function(roomName, svgExport) {
 //     })
 //   });
 // }
+
+
+
+})
+
+
+var angleGetter = function (x,y,degree){
+  if(degree == 90 || degree == 0 || degree == 180 ){
+    return degree;
+  }
+  if(x < 0 &&  degree == 90){
+    return 270;
+  }
+  if(x > 0 && y > 0){
+    return degree;
+  }
+  if(x < 0 && y > 0){
+    return (180 + degree);
+  }
+  if(x < 0 && y < 0){
+    return (degree + 180);
+  }
+  if(x > 0 && y < 0){
+    return (degree + 360);
+  }
+}
+
