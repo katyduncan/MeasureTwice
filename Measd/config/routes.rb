@@ -9,6 +9,7 @@ Rails.application.routes.draw do
      get "serve", :on => :member
   end
 
+
   get '/auth/facebook/callback' => 'sessions#create'
   get "/signout" => "sessions#destroy", :as => :signout
 

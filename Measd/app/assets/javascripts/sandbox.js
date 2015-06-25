@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
   var draw = SVG('drawing').size(800, 500)
   var elem = document.getElementById('drawing');
   var drawOffSetX = elem.offsetLeft;
@@ -17,6 +18,7 @@ $(document).ready(function(){
   var trash = draw.image('/assets/trash.png', 40, 50);
   trash.move(730,340);
   trash.attr({name: 'trashcan'});
+
   var trashHighlight = draw.ellipse(trash.width()+10,trash.height()+10);
   trashHighlight.fill("yellow")
   trashHighlight.cx(trash.cx());
@@ -176,6 +178,7 @@ $(document).ready(function(){
 
   // clear box when clicking in whitespace
   $('svg').on('click', function(){
+
       if(a>-1){ a -= 1; }
 
       if(a == -1 ){
@@ -230,11 +233,11 @@ $(document).ready(function(){
   // mouseup variable
   $('svg').on('mouseup',function(ev){
     if (vmousedown === false){ return; }
-     vmousedown = false;
+    vmousedown = false;
   });//end mouseup event
 
   $('svg').on('click', 'image[name="trashcan"]', function(){
-      console.log('selected')
+    console.log('selected')
     if(selected){
       element.remove();
     }
@@ -261,7 +264,7 @@ $(document).ready(function(){
   $('svg').on('click', 'g[name="sandbox"] image', function(){
     if(a==-1){a +=2;}
     if(a==0){a+=1}
-    element = SVG.get(this.getAttribute('id'))
+      element = SVG.get(this.getAttribute('id'))
     if(a == 1 || 0 ){
 
       draw.rotate(0,0,0);
@@ -290,6 +293,7 @@ $(document).ready(function(){
     }
   })
 
+
   // var svg_string = draw.svg();
 
   // var svg_string = $('g[name="sandbox"]')[0]
@@ -313,6 +317,7 @@ $(document).ready(function(){
       $('ul .floorplan-list').
       append("<li><a href='users/" + response.user_id +"/floorplans/" + response.id + "'>" + response.name + "</a></li>")
     });
+
     sendSvg.fail(function(response){
       alert("You Encountered An Error!");
     });
@@ -359,4 +364,3 @@ var angleGetter = function (x,y,degree){
     return (degree + 360);
   }
 }
-
