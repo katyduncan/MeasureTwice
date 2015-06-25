@@ -21,6 +21,13 @@ $(document).ready(function(){
   yellowRect.hide();
  var selected = false;
 
+  var trash = draw.image('/assets/trash.png', 40, 50)
+  trash.move(735,340)
+  trash.attr('name', 'trashcan')
+
+  var custom = draw.image('/assets/custom.png', 70, 70)
+  custom.move(720, 410)
+  custom.attr('name', 'custom')
 
   var room = draw.rect(roomWidth,roomLength)
   room.fill('white')
@@ -49,7 +56,7 @@ $(document).ready(function(){
 
   var bed = draw.image('/assets/bed.png', 60, 80)
   bed.move(40,410)
-  bed.attr({name: 'Bed'})
+  bed.attr({name: 'Bed', preserveAspectRatio: 'none'})
 
   var desk = draw.image('/assets/desk.png', 60,30)
   desk.move(110,410)
@@ -101,6 +108,13 @@ $(document).ready(function(){
   var element;
   var clone;
 
+
+  //select furniture from sandbox
+  $('svg').on('mousedown', 'g[name="sandbox"] image', function(){
+    element = SVG.get(this.getAttribute('id'));
+  })
+
+
   //toolbox click
   toolBoxFurn.each(function(){
     this.on('click', function(){
@@ -124,9 +138,6 @@ $(document).ready(function(){
     clone.height($('#furn_length').val() * convertToPixels);
     $("#furniture_form").hide()
 
-    // element.draggable(false)
-    // element.transform({ rotation: $('#furn_rotation').val() })
-    // element.draggable()
   });
 
   var a = -1;
@@ -186,7 +197,6 @@ $(document).ready(function(){
     var mPreviousAngle2 = angleGetter(mOldX,mOldY,mPreviousAngle);
     // console.log("previous ",mPreviousAngle, mPreviousAngle2);
 
-
     mCurrentAngle = 90 - Math.atan( (ev.pageY- drawOffSetY - centerY)  / (ev.pageX- drawOffSetX - centerX) )*(360/(2*Math.PI));
     var mCurrentAngle2 = angleGetter((ev.pageX- drawOffSetX - centerX),(ev.pageY- drawOffSetY - centerY),mCurrentAngle);
     // console.log("Current ",mCurrentAngle, mCurrentAngle2);
@@ -211,11 +221,28 @@ $(document).ready(function(){
   });//end mouseup event
 
   $('svg').on('click', 'image[name="trashcan"]', function(){
+      console.log('selected')
     if(selected){
       element.remove();
     }
   });
 
+  $('svg').on('click', 'image[name="custom"]', function(){
+    $('#new_furniture_form').show()
+  })
+
+  $('#new_furniture_form').on('submit', function(e){
+    e.preventDefault()
+    var imageWidth = $('#new_width').val() * convertToPixels;
+    var imageLength = $('#new_length').val() * convertToPixels;
+    var newImage = draw.image($('#new_url').val(), imageWidth, imageLength);
+    newImage.attr({name: $('#new_name').val(), preserveAspectRatio: 'none'})
+    newImage.move(10,10);
+    newImage.draggable();
+    sandboxFurn.add(newImage);
+    $('#new_furniture_form')[0].reset();
+    $('#new_furniture_form').hide();
+  })
 
   // Redraws select box
   $('svg').on('click', 'g[name="sandbox"] image', function(){
@@ -250,8 +277,6 @@ $(document).ready(function(){
     }
   })
 
-  // var svg_string = draw.svg();
-  // submitFloorplan(svg_string);
   var svg_string = draw.svg();
   $('#floorplan_button').on('click', function(e){
     e.preventDefault();
@@ -260,9 +285,6 @@ $(document).ready(function(){
 
 
 var submitFloorplan = function(roomName, svgExport) {
-    console.log(roomName);
-    console.log('winning');
-    // console.log($(this))
     var sendSvg = $.ajax({
       url: window.location.href + '/floorplans',
       type: 'POST',
@@ -270,11 +292,8 @@ var submitFloorplan = function(roomName, svgExport) {
       data: {name: roomName, data: svgExport}
     })
     sendSvg.done(function(response){
-      // console.log(response.name);
-      // console.log(response.svg_data);
       // if @user.floorplans.length < 10 append response.name to ul class="floorplan-list"
       $('ul .floorplan-list').append('<li><a href="#">'+response.name+'</a></li>')
-      // update dropdown with list of floor plans
     });
     sendSvg.fail(function(response){
       alert("You Encountered An Error!");
