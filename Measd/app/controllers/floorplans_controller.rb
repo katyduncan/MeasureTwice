@@ -25,16 +25,7 @@ def index
   end
 
   def create
-    # p "MADE IT TO RUBY CREATE CONTROLLER"
-    # p params[:data]
-    # @user = User.find(params[:user_id])
-    # @floorplan = @user.floorplans.new(name: params[:name],svg_data: params[:data])
-    # if @floorplan.save
-    #   p @floorplan.svg_data
-    #   render json: @floorplan
-    #   # redirect_to user_floorplan_path(@user, @floorplan)
-    p "MADE IT TO RUBY CREATE CONTROLLER"
-    p params[:data]
+
     @user = User.find(params[:user_id])
     @floorplan = @user.floorplans.new(name: params[:name],svgtext: params[:data])
     if @floorplan.save
