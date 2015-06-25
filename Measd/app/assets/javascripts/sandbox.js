@@ -23,6 +23,7 @@ $(document).ready(function(){
 
   var trash = draw.image('/assets/trash.png', 40, 50)
   trash.move(735,340)
+  trash.attr('name', 'trashcan')
 
   var custom = draw.image('/assets/custom.png', 70, 70)
   custom.move(720, 410)
@@ -137,9 +138,6 @@ $(document).ready(function(){
     clone.height($('#furn_length').val() * convertToPixels);
     $("#furniture_form").hide()
 
-    // element.draggable(false)
-    // element.transform({ rotation: $('#furn_rotation').val() })
-    // element.draggable()
   });
 
   var a = -1;
@@ -199,7 +197,6 @@ $(document).ready(function(){
     var mPreviousAngle2 = angleGetter(mOldX,mOldY,mPreviousAngle);
     // console.log("previous ",mPreviousAngle, mPreviousAngle2);
 
-
     mCurrentAngle = 90 - Math.atan( (ev.pageY- drawOffSetY - centerY)  / (ev.pageX- drawOffSetX - centerX) )*(360/(2*Math.PI));
     var mCurrentAngle2 = angleGetter((ev.pageX- drawOffSetX - centerX),(ev.pageY- drawOffSetY - centerY),mCurrentAngle);
     // console.log("Current ",mCurrentAngle, mCurrentAngle2);
@@ -224,6 +221,7 @@ $(document).ready(function(){
   });//end mouseup event
 
   $('svg').on('click', 'image[name="trashcan"]', function(){
+      console.log('selected')
     if(selected){
       element.remove();
     }
