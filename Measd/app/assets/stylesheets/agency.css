@@ -1004,3 +1004,7 @@ input[type="number"] {
 .welcome_link{
     color: white !important;
 }
+
+#change-nav-color{
+    background-color:red;
+}

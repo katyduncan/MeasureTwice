@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
   var draw = SVG('drawing').size(800, 500)
   var elem = document.getElementById('drawing');
   var drawOffSetX = elem.offsetLeft;
@@ -19,7 +20,7 @@ $(document).ready(function(){
   yellowRect.cy(trash.cy());
   yellowRect.back();
   yellowRect.hide();
- var selected = false;
+  var selected = false;
 
   var trash = draw.image('/assets/trash.png', 40, 50)
   trash.move(735,340)
@@ -163,19 +164,19 @@ $(document).ready(function(){
 
   // clear box when clicking in whitespace
   $('svg').on('click', function(){
-      if(a>-1){ a -= 1; }
+    if(a>-1){ a -= 1; }
 
-      if(a == -1 ){
-        selectTop.plot(0,0,0,0).stroke({ width: 1});
-        selectBottom.plot(0,0,0,0).stroke({ width: 1});
-        selectLeft.plot(0,0,0,0).stroke({ width: 1});
-        selectRight.plot(0,0,0,0).stroke({ width: 1});
-        knob.radius(0);
-        connectKnob.radius(0);
-        connectLine.plot(0,0,0,0).stroke({ width: 1});
-        yellowRect.hide()
-        selected = false
-      }
+    if(a == -1 ){
+      selectTop.plot(0,0,0,0).stroke({ width: 1});
+      selectBottom.plot(0,0,0,0).stroke({ width: 1});
+      selectLeft.plot(0,0,0,0).stroke({ width: 1});
+      selectRight.plot(0,0,0,0).stroke({ width: 1});
+      knob.radius(0);
+      connectKnob.radius(0);
+      connectLine.plot(0,0,0,0).stroke({ width: 1});
+      yellowRect.hide()
+      selected = false
+    }
   })
 
   //rotation knob start
@@ -217,11 +218,11 @@ $(document).ready(function(){
   // mouseup variable
   $('svg').on('mouseup',function(ev){
     if (vmousedown === false){ return; }
-     vmousedown = false;
+    vmousedown = false;
   });//end mouseup event
 
   $('svg').on('click', 'image[name="trashcan"]', function(){
-      console.log('selected')
+    console.log('selected')
     if(selected){
       element.remove();
     }
@@ -248,7 +249,7 @@ $(document).ready(function(){
   $('svg').on('click', 'g[name="sandbox"] image', function(){
     if(a==-1){a +=2;}
     if(a==0){a+=1}
-    element = SVG.get(this.getAttribute('id'))
+      element = SVG.get(this.getAttribute('id'))
     if(a == 1 || 0 ){
 
       draw.rotate(0,0,0);
@@ -277,27 +278,27 @@ $(document).ready(function(){
     }
   })
 
-  var svg_string = draw.svg();
-  $('#floorplan_button').on('click', function(e){
-    e.preventDefault();
-    submitFloorplan(roomName, svg_string)
-  });
+var svg_string = draw.svg();
+$('#floorplan_button').on('click', function(e){
+  e.preventDefault();
+  submitFloorplan(roomName, svg_string)
+});
 
 
 var submitFloorplan = function(roomName, svgExport) {
-    var sendSvg = $.ajax({
-      url: window.location.href + '/floorplans',
-      type: 'POST',
-      data_type: 'JSON',
-      data: {name: roomName, data: svgExport}
-    })
-    sendSvg.done(function(response){
+  var sendSvg = $.ajax({
+    url: window.location.href + '/floorplans',
+    type: 'POST',
+    data_type: 'JSON',
+    data: {name: roomName, data: svgExport}
+  })
+  sendSvg.done(function(response){
       // if @user.floorplans.length < 10 append response.name to ul class="floorplan-list"
       $('ul .floorplan-list').append('<li><a href="#">'+response.name+'</a></li>')
     });
-    sendSvg.fail(function(response){
-      alert("You Encountered An Error!");
-    })
+  sendSvg.fail(function(response){
+    alert("You Encountered An Error!");
+  })
 }
 
 // var viewFloorplan = function(){
@@ -347,4 +348,3 @@ var angleGetter = function (x,y,degree){
     return (degree + 360);
   }
 }
-
