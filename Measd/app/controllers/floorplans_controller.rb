@@ -24,8 +24,8 @@ def index
     p "MADE IT TO RUBY CREATE CONTROLLER"
     p params[:data]
     @user = User.find(params[:user_id])
-    @floorplan = @user.floorplans.new(svg_data: params[:data])
-    p @floorplan
+    @floorplan = @user.floorplans.new(name: params[:name],svg_data: params[:data])
+
     # @floorplans = @user.floorplans.new(floorplan_params) do |t|
     #   if params[:floorplan][:sandbox]
     #     t.sandbox = params[:floorplan][:sandbox].read
@@ -40,6 +40,7 @@ def index
     #   render :action => "new"
     # end
     if @floorplan.save
+      p @floorplan.svg_data
       render json: @floorplan
       # redirect_to user_floorplan_path(@user, @floorplan)
     else
