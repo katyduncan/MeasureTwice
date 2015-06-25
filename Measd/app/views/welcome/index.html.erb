@@ -30,7 +30,14 @@
                     <a class="page-scroll welcome_link" href="#about">About</a>
                 </li>
                 <li>
-                <%= link_to "Enter", "/auth/facebook", id: "sign_in", class: "welcome_link" %>
+                    <% if current_user %>
+                    Welcome <%= current_user.name %>!
+                    <%= current_user.email %>
+                    <%= link_to "Sign Out", signout_path, id: "sign_in", class: "welcome_link" %>
+                    <% else %>
+                     <%= link_to "Enter", "/auth/facebook", id: "sign_in", class: "welcome_link" %>
+                    <% end %>
+
                 </li>
               <!--   <li>
                     <a class="page-scroll" href="#team">Team</a>
@@ -48,22 +55,22 @@
 
 <!-- Header -->
 <div class="header-container">
- <div class = "video-container">
-   <video preload="true" autoplay="autoplay" loop="loop" muted="muted" volume="0" poster="pic.jpg"  >
-     <source src="/video/3.mp4" type="video/mp4">
-     <source src="/video/3.webm" type="video/webm">
-     <!-- <source src="/video/3.ogv" type="video/ogg"> -->
+   <div class = "video-container">
+     <video preload="true" autoplay="autoplay" loop="loop" muted="muted" volume="0" poster="pic.jpg"  >
+       <source src="/video/3.mp4" type="video/mp4">
+           <source src="/video/3.webm" type="video/webm">
+               <!-- <source src="/video/3.ogv" type="video/ogg"> -->
 
-   </video> <!-- end of video -->
+           </video> <!-- end of video -->
 
- </div> <!-- end of video container -->
- <h3> <img src="/img/turtles.png" class="img-responsive img-centered" alt="" width="200" height="500">Take the Guesswork Out of Moving.</h3>
-</div> <!-- end of header container -->
+       </div> <!-- end of video container -->
+       <h3> <img src="/img/turtles.png" class="img-responsive img-centered" alt="" width="200" height="500">Take the Guesswork Out of Moving.</h3>
+   </div> <!-- end of header container -->
 
 
 
-<!-- About Section -->
-<section id="about">
+   <!-- About Section -->
+   <section id="about">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -81,104 +88,104 @@
             <div class="col-lg-12 text-center">
                 <h2 class="section-heading">Our Amazing Team</h2>
                 <h4 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="team-member">
+                        <img src="/img/team/katy.jpg" class="img-responsive img-circle" alt="" width="200" height="500">
+                        <h4>Kay Garland</h4>
+                        <p class="text-muted">Lead Designer</p>
+                        <ul class="list-inline social-buttons">
+                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="team-member">
+                        <img src="/img/team/majd.jpg" class="img-responsive img-circle" alt="" width="200" height="500">
+                        <h4>Larry Parker</h4>
+                        <p class="text-muted">Lead Marketer</p>
+                        <ul class="list-inline social-buttons">
+                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="team-member">
+                        <img src="/img/team/nate.jpg" class="img-responsive img-circle" alt="" width="200" height="500">
+                        <h4>Larry Parker</h4>
+                        <p class="text-muted">Lead Marketer</p>
+                        <ul class="list-inline social-buttons">
+                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="team-member">
+                        <img src="/img/team/ryan.jpg" class="img-responsive img-circle" alt="" width="200" height="500">
+                        <h4>Diana Pertersen</h4>
+                        <p class="text-muted">Lead Developer</p>
+                        <ul class="list-inline social-buttons">
+                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-3">
-                <div class="team-member">
-                    <img src="/img/team/katy.jpg" class="img-responsive img-circle" alt="" width="200" height="500">
-                    <h4>Kay Garland</h4>
-                    <p class="text-muted">Lead Designer</p>
-                    <ul class="list-inline social-buttons">
-                        <li><a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xs-3">
-                <div class="team-member">
-                    <img src="/img/team/majd.jpg" class="img-responsive img-circle" alt="" width="200" height="500">
-                    <h4>Larry Parker</h4>
-                    <p class="text-muted">Lead Marketer</p>
-                    <ul class="list-inline social-buttons">
-                        <li><a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xs-3">
-                <div class="team-member">
-                    <img src="/img/team/nate.jpg" class="img-responsive img-circle" alt="" width="200" height="500">
-                    <h4>Larry Parker</h4>
-                    <p class="text-muted">Lead Marketer</p>
-                    <ul class="list-inline social-buttons">
-                        <li><a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xs-3">
-                <div class="team-member">
-                    <img src="/img/team/ryan.jpg" class="img-responsive img-circle" alt="" width="200" height="500">
-                    <h4>Diana Pertersen</h4>
-                    <p class="text-muted">Lead Developer</p>
-                    <ul class="list-inline social-buttons">
-                        <li><a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 text-center">
-                <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
 
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <span class="copyright">Copyright &copy; Your Website 2015</span>
-            </div>
-            <div class="col-md-4">
-                <ul class="list-inline social-buttons">
-                    <li><a href="#"><i class="fa fa-twitter"></i></a>
-                    </li>
-                    <li><a href="#"><i class="fa fa-facebook"></i></a>
-                    </li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <ul class="list-inline quicklinks">
-                    <li><a href="#">Privacy Policy</a>
-                    </li>
-                    <li><a href="#">Terms of Use</a>
-                    </li>
-                </ul>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Copyright &copy; Your Website 2015</span>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li><a href="#">Privacy Policy</a>
+                        </li>
+                        <li><a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
