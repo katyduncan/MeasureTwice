@@ -94,9 +94,6 @@ $(document).ready(function(){
   var element;
   var clone;
 
-  $('svg').on('click', 'image[name="custom"]', function(){
-    $('#new_furniture_form').show()
-  })
 
   //select furniture from sandbox
   $('svg').on('mousedown', 'g[name="sandbox"] image', function(){
@@ -141,6 +138,23 @@ $(document).ready(function(){
     // element.draggable()
 
   });
+  $('svg').on('click', 'image[name="custom"]', function(){
+    $('#new_furniture_form').show()
+  })
+
+  $('#new_furniture_form').on('submit', function(e){
+    e.preventDefault()
+    var imageWidth = $('#new_width').val() * convertToPixels;
+    var imageLength = $('#new_length').val() * convertToPixels;
+    var newImage = draw.image($('#new_url').val(), imageWidth, imageLength);
+    newImage.attr({name: $('#new_name').val(), preserveAspectRatio: 'none'})
+    newImage.move(10,10);
+    newImage.draggable();
+    sandboxFurn.add(newImage);
+    $('#new_furniture_form')[0].reset();
+    $('#new_furniture_form').hide();
+  })
+
   var svg_string = draw.svg();
   $('#floorplan_button').on('click', function(e){
     e.preventDefault();
