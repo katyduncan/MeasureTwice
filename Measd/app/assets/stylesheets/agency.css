@@ -915,20 +915,26 @@ video{
  width: 100%;
 }
 
-h3{
- color: #3cbc8d ;
+#h3{
+ background-color: rgba(0,0,255,0.3);
+ /*opacity: 0.3;*/
+
  z-index: 1;
  text-align: center;
  margin-right: auto;
  margin-left: auto;
  margin-top: 20% !important;
- border:3px solid #ffffff ;
+ border:2px solid #ffffff ;
  padding:10px;
  border-radius: 15px;
  width: 700px;
  letter-spacing:3px;
  font-size: 25px;
  font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+h4{
+ color: white !important;
 }
 
 input[type="text"],input[type="url"] {
@@ -1006,5 +1012,5 @@ input[type="number"] {
 }
 
 #change-nav-color{
-    background-color:red;
+    background-color:black;
 }
