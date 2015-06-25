@@ -284,7 +284,7 @@ $(document).ready(function(){
   });
 
 
-var submitFloorplan = function(roomName, svgExport) {
+  var submitFloorplan = function(roomName, svgExport) {
     var sendSvg = $.ajax({
       url: window.location.href + '/floorplans',
       type: 'POST',
@@ -298,7 +298,7 @@ var submitFloorplan = function(roomName, svgExport) {
     sendSvg.fail(function(response){
       alert("You Encountered An Error!");
     })
-}
+  }
 
 // var viewFloorplan = function(){
 //     $('#floorplan_link').on('click', function(e) {
