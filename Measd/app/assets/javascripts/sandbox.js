@@ -101,12 +101,6 @@ $(document).ready(function(){
   var element;
   var clone;
 
-  //select furniture from sandbox
-  // $('svg').on('mousedown', 'g[name="sandbox"] image', function(){
-  //   element = SVG.get(this.getAttribute('id'));
-  // })
-
-
   //toolbox click
   toolBoxFurn.each(function(){
     this.on('click', function(){
@@ -256,14 +250,6 @@ $(document).ready(function(){
     }
   })
 
-  // $('svg').on('mouseup', 'g[name="sandbox"] image', function(){
-  //   if (element.inside(trash.cx(),trash.cy()) ||
-  //       element.inside(trash.x(), trash.y())
-  //       )
-  //   {
-  //     element.remove();
-  //   }
-  // })
   // var svg_string = draw.svg();
   // submitFloorplan(svg_string);
   var svg_string = draw.svg();
