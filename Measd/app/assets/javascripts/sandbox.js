@@ -277,8 +277,6 @@ $(document).ready(function(){
     }
   })
 
-  // var svg_string = draw.svg();
-  // submitFloorplan(svg_string);
   var svg_string = draw.svg();
   $('#floorplan_button').on('click', function(e){
     e.preventDefault();
@@ -287,9 +285,6 @@ $(document).ready(function(){
 
 
 var submitFloorplan = function(roomName, svgExport) {
-    console.log(roomName);
-    console.log('winning');
-    // console.log($(this))
     var sendSvg = $.ajax({
       url: window.location.href + '/floorplans',
       type: 'POST',
@@ -297,11 +292,8 @@ var submitFloorplan = function(roomName, svgExport) {
       data: {name: roomName, data: svgExport}
     })
     sendSvg.done(function(response){
-      // console.log(response.name);
-      // console.log(response.svg_data);
       // if @user.floorplans.length < 10 append response.name to ul class="floorplan-list"
       $('ul .floorplan-list').append('<li><a href="#">'+response.name+'</a></li>')
-      // update dropdown with list of floor plans
     });
     sendSvg.fail(function(response){
       alert("You Encountered An Error!");
