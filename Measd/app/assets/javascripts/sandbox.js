@@ -307,7 +307,7 @@ $(document).ready(function(){
   var submitFloorplan = function(roomName, svgExport) {
     console.log(svgExport)
     var sendSvg = $.ajax({
-      url: 'http://localhost:3000/users/2/floorplans',
+      url: 'http://localhost:3000/users/1/floorplans',
       type: 'POST',
       data_type: 'JSON',
       data: {name: roomName, data: svgExport}
