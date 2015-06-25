@@ -41,7 +41,7 @@ $(document).ready(function(){
   $('#room_form').submit(function(e){
     e.preventDefault();
     roomName = $('#room_name').val()
-    console.log(roomName)
+    // console.log(roomName)
     room.width($('#room_width').val() * convertToPixels)
     room.height($('#room_length').val() * convertToPixels)
     room.cx(400)
@@ -167,7 +167,7 @@ $(document).ready(function(){
   var mOldX,mOldY;
   var mPreviousAngle, mCurrentAngle;// both are angles relative to center of object
   var deltaAngle;
-//end variable intialization
+  //end variable intialization
 
   // clear box when clicking in whitespace
   $('svg').on('click', function(){
@@ -285,53 +285,52 @@ $(document).ready(function(){
     }
   })
 
-  var svg_string = draw.svg();
+  // var svg_string = draw.svg();
+
+  // var svg_string = $('g[name="sandbox"]')[0]
   $('#floorplan_button').on('click', function(e){
     e.preventDefault();
+    var svg_string = sandboxFurn.svg()
+    console.log(svg_string)
     submitFloorplan(roomName, svg_string)
   });
 
-
   var submitFloorplan = function(roomName, svgExport) {
+    console.log(svgExport)
     var sendSvg = $.ajax({
-      url: window.location.href + '/floorplans',
+      url: 'http://localhost:3000/users/2/floorplans',
       type: 'POST',
       data_type: 'JSON',
       data: {name: roomName, data: svgExport}
-    })
+    });
     sendSvg.done(function(response){
       // if @user.floorplans.length < 10 append response.name to ul class="floorplan-list"
-      $('ul .floorplan-list').append('<li><a href="#">'+response.name+'</a></li>')
+      $('ul .floorplan-list').
+      append("<li><a href='users/" + response.user_id +"/floorplans/" + response.id + "'>" + response.name + "</a></li>")
     });
     sendSvg.fail(function(response){
       alert("You Encountered An Error!");
-    })
+    });
   }
 
-// var viewFloorplan = function(){
-//     $('#floorplan_link').on('click', function(e) {
-//     e.preventDefault();
-//     console.log('Inside viewFloorplan AJAX');
-//     var viewSvg = $.ajax({
-//       url: 'http://localhost:3000/users/1/floorplans/1'
-//     })
-//     sendSvg.done(function(response){
-//       console.log(response);
-//       draw.svg(response['data'])
-//     // clicking on floor plan in dropdown
-//     // ajax call to /floorplans/8
-//     // Floorplan model with svg:string attribute
-//     // in your controller, send back floorplan string
-//     // in the done callback: draw.svg(response['data'])
-//     });
-//     sendSvg.fail(function(response){
-//       alert("You Encountered An Error!");
-//     })
-//   });
-// }
+  $('.floorplan-list a').on('click', function(e) {
+    e.preventDefault();
+    var link = this.href
+    viewFloorplan(link);
+  });
 
-
-
+  var viewFloorplan = function(link){
+    var viewSvg = $.ajax({
+      url: link
+    });
+    viewSvg.done(function(response){
+      console.log(response['data'])
+      $('svg').append(draw.svg(response['data']))
+    });
+    viewSvg.fail(function(response){
+      alert("You Encountered An Error!");
+    });
+  }
 })
 
 
