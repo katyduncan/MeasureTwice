@@ -10,20 +10,18 @@ $(document).ready(function(){
   var roomWidth = 432;
   var roomLength = 288;
   var line = draw.line(0,400, 800,400).stroke({ width: 1 });
+
+
   var trash = draw.image('/assets/trash.png', 40, 50);
   trash.move(735,340);
   trash.attr({name: 'trashcan'});
-  var yellowRect = draw.rect(trash.width()+10,trash.height()+10);
-  yellowRect.fill("yellow")
-  yellowRect.cx(trash.cx());
-  yellowRect.cy(trash.cy());
-  yellowRect.back();
-  yellowRect.hide();
+  var trashHighlight = draw.ellipse(trash.width()+10,trash.height()+10);
+  trashHighlight.fill("yellow")
+  trashHighlight.cx(trash.cx());
+  trashHighlight.cy(trash.cy());
+  trashHighlight.back();
+  trashHighlight.hide();
  var selected = false;
-
-  var trash = draw.image('/assets/trash.png', 40, 50)
-  trash.move(735,340)
-  trash.attr('name', 'trashcan')
 
   var custom = draw.image('/assets/custom.png', 70, 70)
   custom.move(720, 410)
@@ -173,7 +171,7 @@ $(document).ready(function(){
         knob.radius(0);
         connectKnob.radius(0);
         connectLine.plot(0,0,0,0).stroke({ width: 1});
-        yellowRect.hide()
+        trashHighlight.hide()
         selected = false
       }
   })
@@ -272,7 +270,7 @@ $(document).ready(function(){
       knob.radius(4); knob.move(x-2 +(x2-x)/2,y2+18)
       connectKnob.radius(4); connectKnob.move(x-2 +(x2-x)/2,y2);
       connectLine.plot(x+2 +(x2-x)/2,y2+4,x+2 +(x2-x)/2,y2+17).stroke({ width: 1});
-      yellowRect.show();
+      trashHighlight.show();
       selected = true;
     }
   })
