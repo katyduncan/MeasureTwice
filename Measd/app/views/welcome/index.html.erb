@@ -32,7 +32,6 @@
                 <li>
                     <% if current_user %>
                     Welcome <%= current_user.name %>!
-                    <%= current_user.email %>
                     <%= link_to "Sign Out", signout_path, id: "sign_in", class: "welcome_link" %>
                     <% else %>
                      <%= link_to "Enter", "/auth/facebook", id: "sign_in", class: "welcome_link" %>
