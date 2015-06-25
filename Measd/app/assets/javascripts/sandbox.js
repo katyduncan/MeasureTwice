@@ -3,14 +3,16 @@ $(document).ready(function(){
   var elem = document.getElementById('drawing');
   var drawOffSetX = elem.offsetLeft;
   var drawOffSetY = elem.offsetTop;
+  var selected = false;
 
-  var roomName = "My First Room"
   var convertToInches = .5
   var convertToPixels = 2
+
+  var roomName = "My First Room"
   var roomWidth = 432;
   var roomLength = 288;
-  var line = draw.line(0,400, 800,400).stroke({ width: 1 });
 
+  var line = draw.line(0,400, 800,400).stroke({ width: 1 });
 
   var trash = draw.image('/assets/trash.png', 40, 50);
   trash.move(735,340);
@@ -21,7 +23,6 @@ $(document).ready(function(){
   trashHighlight.cy(trash.cy());
   trashHighlight.back();
   trashHighlight.hide();
- var selected = false;
 
   var custom = draw.image('/assets/custom.png', 70, 70)
   custom.move(720, 410)
@@ -47,6 +48,15 @@ $(document).ready(function(){
     room.cy(200)
     $('#room_form').hide();
   });
+
+  var roomCornerX = room.x() + room.width() - 3
+  var roomCornerY = room.y() - 3
+  var scaleWidth = 48
+  var firstTic = draw.line(roomCornerX, roomCornerY - 20, roomCornerX, roomCornerY - 5).stroke({color: 'blue', width: 2})
+  var scaleBody = draw.line(roomCornerX, roomCornerY - 5, roomCornerX - scaleWidth, roomCornerY - 5).stroke({color: 'blue', width: 2})
+  var finalTic = draw.line(roomCornerX - scaleWidth, roomCornerY - 5, roomCornerX - scaleWidth, roomCornerY - 20).stroke({color: 'blue', width: 2})
+  var scaleWords = draw.image('/assets/scale.png', 42, 9)
+  scaleWords.move(roomCornerX - scaleWidth + 2, roomCornerY - 20)
 
   var nightstand = draw.image('/assets/nightstand.png', 20,20)
   nightstand.move(10, 410)
