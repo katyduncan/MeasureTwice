@@ -892,7 +892,7 @@ body {
 
 .header-container {
  width: 100%;
- height: 900px;
+ height: 800px;
  border-left: none;
  border-right: none;
  position: relative;
@@ -911,7 +911,7 @@ body {
 video{
  position: absolute;
  z-index: -1;
- opacity: 0.78;
+ opacity: 0.58;
  width: 100%;
 }
 
@@ -1013,4 +1013,20 @@ input[type="number"] {
 
 #change-nav-color{
     background-color:black;
+}
+
+#team {
+    padding: 50px 0;
+}
+
+#big_logo {
+    padding-bottom: 50px;
+}
+
+.h4dark {
+    color: black !important;
+}
+
+#about {
+    padding-top: 0px;
 }
