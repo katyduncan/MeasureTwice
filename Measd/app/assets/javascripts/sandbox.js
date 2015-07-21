@@ -294,18 +294,16 @@ $(document).ready(function(){
   })
 
 
-  // var svg_string = draw.svg();
-
-  // var svg_string = $('g[name="sandbox"]')[0]
   $('#floorplan_button').on('click', function(e){
     e.preventDefault();
     var svg_string = sandboxFurn.svg()
     console.log(svg_string)
-    submitFloorplan(roomName, svg_string)
+    saveFloorplan(roomName, svg_string)
   });
 
-  var submitFloorplan = function(roomName, svgExport) {
+  var saveFloorplan = function(roomName, svgExport) {
     console.log(svgExport)
+    console.log(this)
     var sendSvg = $.ajax({
       url: 'http://localhost:3000/users/1/floorplans',
       type: 'POST',
@@ -314,6 +312,7 @@ $(document).ready(function(){
     });
     sendSvg.done(function(response){
       // if @user.floorplans.length < 10 append response.name to ul class="floorplan-list"
+      // on submit need to refresh to new room form
       $('ul .floorplan-list').
       append("<li><a href='users/" + response.user_id +"/floorplans/" + response.id + "'>" + response.name + "</a></li>")
     });
@@ -335,6 +334,7 @@ $(document).ready(function(){
     });
     viewSvg.done(function(response){
       console.log(response['data'])
+      // first need to refresh to new room w/o form
       $('svg').append(draw.svg(response['data']))
     });
     viewSvg.fail(function(response){

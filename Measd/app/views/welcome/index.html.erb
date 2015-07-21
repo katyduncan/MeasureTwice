@@ -1,7 +1,7 @@
 
 
 <!-- Navigation...bar-clear-color class to clear navbar background.. -->
-<nav class="navbar navbar-default navbar-fixed-top bar-clear-color" id="navbar_welcome">
+<nav class="navbar navbar-inverse navbar-fixed-top" id="navbar_welcome">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
@@ -11,7 +11,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll welcome_link" href="#page-top">Measure it Twice!</a>
+            <a class="navbar-brand page-scroll welcome_link" href="#page-top">Measure Twice!</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -20,15 +20,9 @@
                 <li class="hidden">
                     <a href="#page-top"></a>
                 </li>
-               <!--  <li>
-                    <a class="page-scroll" href="#services">Services</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#portfolio">Portfolio</a>
-                </li> -->
 
                 <% if current_user %>
-                <li>
+                <li class="navbar-brand welcome_link">
                     WELCOME, <%= current_user.name.upcase %>!      |
                 </li>
                 <% end %>
@@ -59,8 +53,8 @@
 <div class="header-container">
    <div class = "video-container">
      <video preload="true" autoplay="autoplay" loop="loop" muted="muted" volume="0" poster="/img/team/katy.jpg"  >
-       <source src="/video/3.mp4" type="video/mp4">
-           <source src="/video/3.webm" type="video/webm">
+       <source src="/video/background-loop.mp4" type="video/mp4">
+           <source src="/video/background-loop.webm" type="video/webm">
                <!-- <source src="/video/3.ogv" type="video/ogg"> -->
 
            </video> <!-- end of video -->
@@ -80,8 +74,8 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2 class="section-heading">About</h2>
-                <h3 class="section-subheading text-muted"></h3>
-                <h4>Let us show you how to move.</h4>
+<!--                 <h3 class="section-subheading text-muted"></h3> -->
+                <h4 class="h4dark">Anyone who's moved knows how stressful a process it can be trying to guess what will fit where. We have set out to provide a user-friendly tool that serves as a virtual playground for testing the placement of various shapes in a given space. There's a carpenter's saying: "Measure Twice, Cut Once". Let us take the guesswork out of moving. Please enjoy Measure Twice!</h4>
             </div>
         </div>
     </div>
@@ -92,76 +86,38 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <img src="/img/turtles.png" class="img-responsive img-centered welcome_link" alt="" width="200" height="500">
+                <img id="big_logo"src="/img/logo.png" class="img-responsive img-centered welcome_link" alt="" width="200" height="500">
                 <h2 class="section-heading">Our Amazing Team</h2>
-                <h4 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-3">
                     <div class="team-member">
                         <img src="/img/team/blackpiece.png"  class="img-responsive img-circle hoverelement" id="katyPic" alt="" width="200" height="500">
-                        <h4>Katy Duncan</h4>
+                        <h4 class="h4dark">Katy Duncan</h4>
                         <p class="text-muted"> "Pink-Kirby" </p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
                 <div class="col-xs-3">
                     <div class="team-member">
                         <img src="/img/team/blackpiece.png" class="img-responsive img-circle hoverelement" id="majdPic" alt="" width="200" height="500">
-                        <h4>Majd Murad</h4>
+                        <h4 class="h4dark">Majd Murad</h4>
                         <p class="text-muted"> "Blue-Kirby" </p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
                 <div class="col-xs-3">
                     <div class="team-member">
                         <img src="/img/team/blackpiece.png" class="img-responsive img-circle hoverelement" id="natePic" alt="" width="200" height="500">
-                        <h4>Nate Lee</h4>
+                        <h4 class="h4dark">Nate Lee</h4>
                         <p class="text-muted">"Fox"</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
                 <div class="col-xs-3">
                     <div class="team-member">
                         <img src="/img/team/blackpiece.png" class="img-responsive img-circle hoverelement" id="ryanPic" alt="" width="200" height="500">
-                        <h4>Ryan Carpenter </h4>
+                        <h4 class="h4dark">Ryan Carpenter </h4>
                         <p class="text-muted"> "Yoshi" </p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
                 </div>
             </div>
         </div>
