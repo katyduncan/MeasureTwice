@@ -3,12 +3,20 @@ DBC Final Project
 
 This app aims to provide a user-friendly tool for simulating furniture arrangement within a given space to take the guesswork out of moving.
 
-Work still in progress.
+We utilized the SVG.js library to construct the images in real-time with our furniture arrangement tool. Some pieces were missing from the library, slowing down progress. We built our own custom rotation method to accommodate that feature, for example.
 
-*This repository has been forked from the originator of this project, Katy Duncan. I did this to display my individual contributions to this project without affecting the main repository. No further development will be completed on this forked repository.
+Current development state:
+* User can log in using Facebook OmniAuth
+* User can input room dimensions
+* User can add predrawn furniture with custom dimensions to draw tool
+* User can drag furniture on draw tool
+* User can rotate furniture on draw tool
+* User can add image url for a custum piece of furniture
+* User can save current room layout
 
-Majd(creatyvtype)'s contribution to this project involved researching and implementing most of the Client Tool using SVG.js. This involved drawing the basic images for the tool, incorporating SVG.js to render the images to scale when clicked, adding the delete and custom furniture features.
+Work still in progress. Checkout the development branch for latest version.
 
+Screenshots:
 <img src=https://github.com/creatyvtype/MeasureTwice/blob/master/images/measd1.png width=70%>
 <img src=https://github.com/creatyvtype/MeasureTwice/blob/master/images/measd2.png width=70%>
 <img src=https://github.com/creatyvtype/MeasureTwice/blob/master/images/measd3.png width=70%>
@@ -18,12 +26,17 @@ Majd(creatyvtype)'s contribution to this project involved researching and implem
 No installation is currently required. The application is not currently deployed.
 
 ## Contributing
-Visit the main repo to contribute to this project!
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request :D
 
 ## History
-Current version presented for final projects at Dev Bootcamp, 6/26/15 
+Current version presented for final projects at Dev Bootcamp, 6/26/15
 
 ## Credits
+Bootstrap
 SVG.js
 Piskel
 Sketchpad3.7
