@@ -34,13 +34,14 @@ No installation is currently required. The application is not currently deployed
 5. Submit a pull request :D
 
 ## History
-Current version presented for final projects at Dev Bootcamp, 6/26/15
+Original version presented for final projects at Dev Bootcamp, 6/26/15
 
 ## Credits
 Bootstrap
 SVG.js
+Draggable.js
 Piskel
 Sketchpad3.7
 
 ## License
-Licenced MIT
+Licensed MIT
