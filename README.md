@@ -37,10 +37,10 @@ No installation is currently required. The application is not currently deployed
 Original version presented for final projects at Dev Bootcamp, 6/26/15
 
 ## Credits
-Bootstrap
-SVG.js
-Draggable.js
-Piskel
+Bootstrap  
+SVG.js  
+Draggable.js  
+Piskel  
 Sketchpad3.7
 
 ## License
