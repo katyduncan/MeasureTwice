@@ -1,0 +1,169 @@
+
+
+Started GET "/" for ::1 at 2015-07-21 23:46:22 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (26.5ms)
+Completed 200 OK in 5644ms (Views: 5632.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/" for ::1 at 2015-07-21 23:46:28 -0700
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 76ms (Views: 75.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/sandbox.self-a22ed884174e50e7580214ecaa4c9ff5448c406b7df0201b1abff9bc77d0349c.js?body=1" for ::1 at 2015-07-21 23:46:28 -0700
+
+
+Started GET "/assets/agency.self-fc93662353774a7fce67eb946c354e2a08eecad6d901c4bf7cd8558ea73d118d.css?body=1" for ::1 at 2015-07-21 23:46:28 -0700
+
+
+Started GET "/auth/facebook" for ::1 at 2015-07-21 23:46:32 -0700
+
+
+Started GET "/auth/facebook" for ::1 at 2015-07-21 23:46:32 -0700
+
+
+Started GET "/auth/facebook/callback?code=AQAi6OV1-4dYmsjMlalnauH5aZRLuv4Cth3SI5t13lxoYEKKj7FQczTRcgL-VsaQbWB1ydjI9xN0-iTijiL9I0s0FFVy8pcMvXLZ_8tdiwHr4GwFVYOhlwHewZ5zkCrW-MAugIjMSqpdnt-SfO5gDXSPFxPiVnn4WPl1BumkgwWKkzMbyoj6g4TFQdfP2AZVLGKIq2RMmtGyRpQZaRf06YS1VPdVTeFK4GWRix3QtYk7y1PmCZN1IF47ftomclzOA9eelDp7Ite_fA7mM16xGzDY4kJocqjNzfgzCilo9Qfk8bjoah2qH64hlr2vRhG4OjxDy_7tDdqEmLxP9szmBcu2XGaR-oFNkO2po3h4k7xoDA&state=b5d1b59367f366068e62dd51cc00e58785c0ad2b446c9bd7" for ::1 at 2015-07-21 23:46:32 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"code"=>"AQAi6OV1-4dYmsjMlalnauH5aZRLuv4Cth3SI5t13lxoYEKKj7FQczTRcgL-VsaQbWB1ydjI9xN0-iTijiL9I0s0FFVy8pcMvXLZ_8tdiwHr4GwFVYOhlwHewZ5zkCrW-MAugIjMSqpdnt-SfO5gDXSPFxPiVnn4WPl1BumkgwWKkzMbyoj6g4TFQdfP2AZVLGKIq2RMmtGyRpQZaRf06YS1VPdVTeFK4GWRix3QtYk7y1PmCZN1IF47ftomclzOA9eelDp7Ite_fA7mM16xGzDY4kJocqjNzfgzCilo9Qfk8bjoah2qH64hlr2vRhG4OjxDy_7tDdqEmLxP9szmBcu2XGaR-oFNkO2po3h4k7xoDA", "state"=>"b5d1b59367f366068e62dd51cc00e58785c0ad2b446c9bd7"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 LIMIT 1  [["provider", "facebook"], ["uid", "10102689844681554"]]
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 7ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/users/2" for ::1 at 2015-07-21 23:46:33 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35m (1.6ms)[0m  SELECT COUNT(*) FROM "floorplans" WHERE "floorplans"."user_id" = $1  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (32.7ms)
+Completed 200 OK in 155ms (Views: 145.6ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/assets/trash.png" for ::1 at 2015-07-21 23:46:33 -0700
+
+
+Started GET "/assets/custom.png" for ::1 at 2015-07-21 23:46:33 -0700
+
+
+Started GET "/assets/scale.png" for ::1 at 2015-07-21 23:46:33 -0700
+
+
+Started GET "/assets/nightstand.png" for ::1 at 2015-07-21 23:46:33 -0700
+
+
+Started GET "/assets/bed.png" for ::1 at 2015-07-21 23:46:33 -0700
+
+
+Started GET "/assets/desk.png" for ::1 at 2015-07-21 23:46:34 -0700
+
+
+Started GET "/assets/couch.png" for ::1 at 2015-07-21 23:46:34 -0700
+
+
+Started GET "/assets/sofa.png" for ::1 at 2015-07-21 23:46:34 -0700
+
+
+Started GET "/assets/roundtable.png" for ::1 at 2015-07-21 23:46:34 -0700
+
+
+Started GET "/assets/tvstand.png" for ::1 at 2015-07-21 23:46:34 -0700
+
+
+Started GET "/assets/doorleft.png" for ::1 at 2015-07-21 23:46:34 -0700
+
+
+Started GET "/assets/doorright.png" for ::1 at 2015-07-21 23:46:34 -0700
+
+
+Started GET "/assets/window.png" for ::1 at 2015-07-21 23:46:34 -0700
+
+
+Started GET "/assets/outlet.png" for ::1 at 2015-07-21 23:46:34 -0700
+
+
+Started GET "/" for ::1 at 2015-07-21 23:48:16 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (19.3ms)
+Completed 200 OK in 567ms (Views: 556.4ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/" for ::1 at 2015-07-21 23:48:17 -0700
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered welcome/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 85ms (Views: 83.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/auth/facebook" for ::1 at 2015-07-21 23:48:21 -0700
+
+
+Started GET "/auth/facebook" for ::1 at 2015-07-21 23:48:25 -0700
+
+
+Started GET "/auth/facebook" for ::1 at 2015-07-21 23:48:25 -0700
+
+
+Started GET "/auth/facebook/callback?code=AQA21ZNeVYIAT2Wdk-dXZ5BWLu7KIZ6KOXlWU7kEeTLBB0d6hfJmymjGyhI7lzgXNSo5Pe-i7kCZ36-KJYpadcYi-oekpDPvRinOQtf6dnEkg2A4YMGLhKNq3Ucjl31QptkSN8HIk4OVWAfyfe3l2tFABeIw6GgfPuDMgqmFrH9h1qoWDQA2UlIHdr0ER4_K0P6nth10rIxYq2gHhB-MidpQVvTK0044EFn0ckj50vEQFlcjTJ2V8Hs-Y4orhuwlE71fGGqt9wGL8o01cz09AH8POc_laktd_X7FYZ9WhI8rHDVbT3C5TFAJlMgiJiXW7B1SNFq4JKyelyBQXtkhwiz8CjIXHydpirOKzSu9bY0g-g&state=66502957ca527e0aaa302f42b760e0a0fddf4f73e270663a" for ::1 at 2015-07-21 23:48:26 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"code"=>"AQA21ZNeVYIAT2Wdk-dXZ5BWLu7KIZ6KOXlWU7kEeTLBB0d6hfJmymjGyhI7lzgXNSo5Pe-i7kCZ36-KJYpadcYi-oekpDPvRinOQtf6dnEkg2A4YMGLhKNq3Ucjl31QptkSN8HIk4OVWAfyfe3l2tFABeIw6GgfPuDMgqmFrH9h1qoWDQA2UlIHdr0ER4_K0P6nth10rIxYq2gHhB-MidpQVvTK0044EFn0ckj50vEQFlcjTJ2V8Hs-Y4orhuwlE71fGGqt9wGL8o01cz09AH8POc_laktd_X7FYZ9WhI8rHDVbT3C5TFAJlMgiJiXW7B1SNFq4JKyelyBQXtkhwiz8CjIXHydpirOKzSu9bY0g-g", "state"=>"66502957ca527e0aaa302f42b760e0a0fddf4f73e270663a"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 LIMIT 1  [["provider", "facebook"], ["uid", "10102689844681554"]]
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/users/2" for ::1 at 2015-07-21 23:48:27 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35m (1.2ms)[0m  SELECT COUNT(*) FROM "floorplans" WHERE "floorplans"."user_id" = $1  [["user_id", 2]]
+  Rendered users/show.html.erb within layouts/application (25.7ms)
+Completed 200 OK in 153ms (Views: 144.1ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/assets/trash.png" for ::1 at 2015-07-21 23:48:27 -0700
+
+
+Started GET "/assets/custom.png" for ::1 at 2015-07-21 23:48:27 -0700
+
+
+Started GET "/assets/scale.png" for ::1 at 2015-07-21 23:48:27 -0700
+
+
+Started GET "/assets/nightstand.png" for ::1 at 2015-07-21 23:48:27 -0700
+
+
+Started GET "/assets/bed.png" for ::1 at 2015-07-21 23:48:27 -0700
+
+
+Started GET "/assets/desk.png" for ::1 at 2015-07-21 23:48:27 -0700
+
+
+Started GET "/assets/couch.png" for ::1 at 2015-07-21 23:48:27 -0700
+
+
+Started GET "/assets/sofa.png" for ::1 at 2015-07-21 23:48:27 -0700
+
+
+Started GET "/assets/roundtable.png" for ::1 at 2015-07-21 23:48:27 -0700
+
+
+Started GET "/assets/tvstand.png" for ::1 at 2015-07-21 23:48:27 -0700
+
+
+Started GET "/assets/doorleft.png" for ::1 at 2015-07-21 23:48:27 -0700
+
+
+Started GET "/assets/doorright.png" for ::1 at 2015-07-21 23:48:27 -0700
+
+
+Started GET "/assets/window.png" for ::1 at 2015-07-21 23:48:27 -0700
+
+
+Started GET "/assets/outlet.png" for ::1 at 2015-07-21 23:48:27 -0700
