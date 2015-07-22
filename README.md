@@ -17,6 +17,7 @@ Current development state:
 Work still in progress. Checkout the development branch for latest version.
 
 Screenshots:
+
 <img src=https://github.com/creatyvtype/MeasureTwice/blob/master/images/measd1.png width=70%>
 <img src=https://github.com/creatyvtype/MeasureTwice/blob/master/images/measd2.png width=70%>
 <img src=https://github.com/creatyvtype/MeasureTwice/blob/master/images/measd3.png width=70%>
