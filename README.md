@@ -5,6 +5,8 @@ This app aims to provide a user-friendly tool for simulating furniture arrangeme
 
 Work still in progress.
 
+*This repository has been forked from the originator of this project, Katy Duncan. I did this to display my individual contributions to this project without affecting the main repository. No further development will be completed on this forked repository.
+
 Majd(creatyvtype)'s contribution to this project involved researching and implementing most of the Client Tool using SVG.js. This involved drawing the basic images for the tool, incorporating SVG.js to render the images to scale when clicked, adding the delete and custom furniture features.
 
 <img src=https://github.com/creatyvtype/MeasureTwice/blob/master/images/measd1.png width=70%>
@@ -16,11 +18,7 @@ Majd(creatyvtype)'s contribution to this project involved researching and implem
 No installation is currently required. The application is not currently deployed.
 
 ## Contributing
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
+Visit the main repo to contribute to this project!
 
 ## History
 Current version presented for final projects at Dev Bootcamp, 6/26/15 
