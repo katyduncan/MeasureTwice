@@ -13,6 +13,7 @@ Current development state:
 * User can rotate furniture on draw tool
 * User can add image url for a custum piece of furniture
 * User can save current room layout
+* ***Currently working on image processing capabilities***
 
 Work still in progress. Checkout the development branch for latest version.
 
@@ -24,12 +25,13 @@ Screenshots:
 <img src=https://github.com/creatyvtype/MeasureTwice/blob/master/images/measd4.png width=70%>
 
 ## Installation and Usage
-No installation is currently required. The application is not currently deployed.
+The application is not currently deployed. To run from command line please be sure to run bundle install and create/migrate the database.
+
 
 ## Contributing
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
+3. Commit your changes: `git commit -v` (then explain your proposed changes in detail and save)
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 
