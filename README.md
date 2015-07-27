@@ -25,7 +25,7 @@ Screenshots:
 <img src=https://github.com/creatyvtype/MeasureTwice/blob/master/images/measd4.png width=70%>
 
 ## Installation and Usage
-The application is not currently deployed. To run from command line please be sure to run bundle and create/migrate the database.
+The application is not currently deployed. To run from the command line on your local machine please be sure to run bundle and create/migrate the database.
 
 
 ## Contributing
