@@ -297,15 +297,25 @@ $(document).ready(function(){
   $('#floorplan_button').on('click', function(e){
     e.preventDefault();
     var svg_string = sandboxFurn.svg()
-    console.log(svg_string)
-    saveFloorplan(roomName, svg_string)
+    console.log($(this).attr('href'));
+    var parser = document.createElement('a');
+    parser.href = $(this).attr('href')
+    parser.protocol;
+    parser.host;
+    parser.hostname;
+    parser.port;
+    console.log(parser.pathname);
+    parser.hash;
+    user_id_pull = $(this).attr('href').split('/')[2]
+    console.log(user_id_pull)
+    saveFloorplan(roomName, svg_string, user_id_pull)
   });
 
-  var saveFloorplan = function(roomName, svgExport) {
+  var saveFloorplan = function(roomName, svgExport, given_user_id) {
     console.log(svgExport)
     console.log(this)
     var sendSvg = $.ajax({
-      url: 'http://localhost:3000/users/1/floorplans',
+      url: "http://localhost:3000/users/" + given_user_id + "/floorplans",
       type: 'POST',
       data_type: 'JSON',
       data: {name: roomName, data: svgExport}
@@ -313,6 +323,8 @@ $(document).ready(function(){
     sendSvg.done(function(response){
       // if @user.floorplans.length < 10 append response.name to ul class="floorplan-list"
       // on submit need to refresh to new room form
+
+      console.log(response)
       $('ul .floorplan-list').
       append("<li><a href='users/" + response.user_id +"/floorplans/" + response.id + "'>" + response.name + "</a></li>")
     });
