@@ -27,6 +27,8 @@ def index
   def create
 
     @user = User.find(params[:user_id])
+    p params[:user_id]
+    p @user
     @floorplan = @user.floorplans.new(name: params[:name],svgtext: params[:data])
     if @floorplan.save
       p @floorplan.svgtext
